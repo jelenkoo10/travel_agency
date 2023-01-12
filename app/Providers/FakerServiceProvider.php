@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Faker\LocationProvider;
+use App\Faker\TransportProvider;
+use App\Faker\ApartmentProvider;
+use Faker\{Factory, Generator};
 use Illuminate\Support\ServiceProvider;
 
 class FakerServiceProvider extends ServiceProvider

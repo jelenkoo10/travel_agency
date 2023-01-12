@@ -24,8 +24,8 @@ class OfferFactory extends Factory
             'stars'          =>  $this->faker->numberBetween($min = 1, $max = 5),
             'price'          =>  $this->faker->numberBetween($min = 80, $max = 1500),
             'departure_time' =>  $departure_time,
-            'arrival_time'   =>  $this->faker->dateTimeInInterval($startDate = $departure_time, $interval = '+ 5 days'),
-            'program'        =>  $this->faker->paragraph($nbSentences = 10),
+            'arrival_time'   =>  $this->faker->dateTimeInInterval($startDate = $departure_time, $interval = '+ 10 days'),
+            'program'        =>  "",
             'images'         =>  "",
         ];
     }
