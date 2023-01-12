@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->string('location');
+            $table->string('continent');
+            $table->string('country');
+            $table->string('city');
             $table->string('transport');
             $table->string('apartment');
             $table->integer('stars');

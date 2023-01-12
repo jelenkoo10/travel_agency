@@ -17,8 +17,12 @@ class OfferFactory extends Factory
     public function definition()
     {
         $departure_time = $this->faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years');
+        $full_location = $this->faker->location();
+        $divided_location = explode(",", $full_location); 
         return [
-            'location'       =>  $this->faker->location(),
+            'continent'      =>  $divided_location[2],
+            'country'        =>  $divided_location[1],
+            'city'           =>  $divided_location[0],
             'transport'      =>  $this->faker->transport(),
             'apartment'      =>  $this->faker->apartment(),
             'stars'          =>  $this->faker->numberBetween($min = 1, $max = 5),

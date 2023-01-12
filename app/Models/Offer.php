@@ -10,7 +10,9 @@ class Offer extends Model
     use HasFactory;
 
     protected $fillable = [
-        'location',
+        'continent',
+        'country',
+        'city',
         'transport',
         'apartment',
         'stars',
