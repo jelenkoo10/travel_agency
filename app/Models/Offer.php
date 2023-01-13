@@ -22,4 +22,8 @@ class Offer extends Model
         'program',
         'images',
     ];
+
+    public function reservations() {
+        return $this->hasMany(Reservation::class);
+    }
 }
