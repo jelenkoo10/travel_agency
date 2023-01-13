@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Offer;
+use App\Models\User;
 
-class OfferSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class OfferSeeder extends Seeder
      */
     public function run()
     {
-        Offer::factory(20000)->create();
+        User::factory(10)->create();
     }
 }
