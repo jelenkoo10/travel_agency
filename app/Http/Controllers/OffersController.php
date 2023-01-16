@@ -17,10 +17,15 @@ class OffersController extends Controller
     public function show($id) {
 
         $offer = Offer::whereId($id)->get();
-        return view('offers.show', compact('offer'));
+        return view('offers.show', compact('offer', 'id'));
     }
 
     public function create() {
         return view('offers.create');
+    }
+
+    public function update($id) {
+        $offer = Offer::whereId($id)->get();
+        return view('offers.update', compact('offer'));
     }
 }
