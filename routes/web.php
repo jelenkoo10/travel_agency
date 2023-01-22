@@ -25,7 +25,9 @@ Route::get('/offer/{id}', [App\Http\Controllers\OffersController::class, 'show']
 Route::get('/offer/{id}/update', [App\Http\Controllers\OffersController::class, 'edit'])->name('offers.edit');
 Route::post('/offer/{id}/update', [App\Http\Controllers\OffersController::class, 'store'])->name('offers.store');
 
-Route::get('/offer/{id}/reservation', [App\Http\Controllers\ReservationsController::class, 'create'])->name('reservations.create');
+Route::get('/reservations', [App\Http\Controllers\ReservationsController::class, 'index'])->name('reservations.index');
 Route::post('/reservation', [App\Http\Controllers\ReservationsController::class, 'store'])->name('reservations.store');
+Route::get('/offer/{id}/reservation', [App\Http\Controllers\ReservationsController::class, 'create'])->name('reservations.create');
 
+Route::get('/user/create', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
 Route::get('/user/{id}', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
