@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('payment');
             $table->integer('num_of_travelers');
             $table->string('comment');
+            $table->enum('status', array('0','1'))->default('0');
             $table->timestamps();
 
             $table->index('offer_id');
