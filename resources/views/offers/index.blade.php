@@ -3,7 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <!-- <a href="http://127.0.0.1:8000/offer/create">Add new offer</a> -->
+        @auth
+            <a href="http://127.0.0.1:8000/offer/create">Add new offer</a>
+        @endauth
+        
         <div class="col-md-8">
             @unless ($offers->isEmpty())
                 @foreach ($offers as $offer)
