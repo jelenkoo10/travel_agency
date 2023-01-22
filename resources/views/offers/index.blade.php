@@ -10,7 +10,7 @@
                     <div class="card">
                         <a href="http://127.0.0.1:8000/offer/{{ $offer->id }}">
                             <p class="location">{{$offer->city}}, {{$offer->country}}</p>
-                            <!-- <a href="http://127.0.0.1:8000/offer/update">Update offer</a> -->
+                            <a href="http://127.0.0.1:8000/offer/{{$offer->id}}/update">Update offer</a>
                         </a>
                     </div>
                 @endforeach

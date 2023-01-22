@@ -27,3 +27,5 @@ Route::post('/offer/{id}/update', [App\Http\Controllers\OffersController::class,
 
 Route::get('/offer/{id}/reservation', [App\Http\Controllers\ReservationsController::class, 'create'])->name('reservations.create');
 Route::post('/reservation', [App\Http\Controllers\ReservationsController::class, 'store'])->name('reservations.store');
+
+Route::get('/user/{id}', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
