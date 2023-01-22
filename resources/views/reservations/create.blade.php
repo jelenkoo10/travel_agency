@@ -9,7 +9,7 @@
                 @csrf
                 <div>
                     <div>
-                        <input type="hidden" name="offer_id" id="offer_id" value="{{ $id }}" />
+                        <input type="hidden" name="offer_id" id="offer_id" value="{{ request()->route('id') }}" />
                     </div>
                     <div>
                         <label for="traveler_name">Ime:</label>
@@ -61,7 +61,7 @@
 
                 <div class="row">
                     <div class="col-6">
-                        <button class="submit-btn">Pošalji oglas</button>
+                        <button class="submit-btn">Pošalji rezervaciju</button>
                     </div>
                 </div>
             </form>

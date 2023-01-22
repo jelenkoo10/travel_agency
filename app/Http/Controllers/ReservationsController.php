@@ -14,6 +14,7 @@ class ReservationsController extends Controller
     public function store(Request $request)
     {
         $formValues = $request->validate([
+            'offer_id' => 'required',
             'traveler_name' => 'required',
             'traveler_surname' => 'required',
             'phone_number' => 'required',
@@ -25,6 +26,6 @@ class ReservationsController extends Controller
         $formValues['offer_id'] = $offer_id;
         Reservation::create($formValues);
 
-        return redirect("/offer/{{ offer_id }}");//->with('message', 'Listing created successfully!');
+        return redirect("/home");//->with('message', 'Listing created successfully!');
     }
 }

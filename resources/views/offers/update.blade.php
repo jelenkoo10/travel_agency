@@ -57,7 +57,7 @@
                         @enderror
                     </div> -->
                     <div class="row pt-3">
-                        <button class="btn btn-primary col-sm-4 col-md-2">Izmenite rezervaciju</button>
+                        <button class="btn btn-primary col-sm-6 col-md-3">Izmenite rezervaciju</button>
                     </div>
                 </div>
             </div>
