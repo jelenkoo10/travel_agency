@@ -17,6 +17,7 @@ class Reservation extends Model
         'payment',
         'num_of_travelers',
         'comment',
+        'offer_id',
     ];
 
     public function offer() {

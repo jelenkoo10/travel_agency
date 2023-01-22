@@ -9,7 +9,8 @@
                 @csrf
                 <div>
                     <div>
-                        <input type="hidden" name="offer_id" id="offer_id" value="{{ request()->route('id') }}" />
+                        <label for="offer_id">ID aranžmana:</label>
+                        <input name="offer_id" id="offer_id" value="{{ request()->route('id') }}" readonly />
                     </div>
                     <div>
                         <label for="traveler_name">Ime:</label>

@@ -28,7 +28,6 @@ class ReservationsController extends Controller
             'num_of_travelers' => 'required',
             'comment' => 'required',
         ]);
-        $formValues['offer_id'] = $offer_id;
         Reservation::create($formValues);
 
         return redirect("/home");//->with('message', 'Listing created successfully!');
