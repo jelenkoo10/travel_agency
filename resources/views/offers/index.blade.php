@@ -12,9 +12,9 @@
                 @foreach ($offers as $offer)
                     <div class="card">
                         <a href="http://127.0.0.1:8000/offer/{{ $offer->id }}">{{$offer->offer_name}}</a>
-                        <p>{{$offer->city}}, {{$offer->country}} - {{$offer->num_of_days}}</p>
+                        <p>{{$offer->city}}, {{$offer->country}} - {{substr($offer->num_of_days, 1)}}</p>
                         <p>Departure: {{$offer->departure_time}}</p>
-                        <p>Price: {{$offer->price}}</p>
+                        <p>Price: {{$offer->price}}€</p>
                         <p>Transport: {{$offer->transport}}</p>
                         @auth
                             <a href="http://127.0.0.1:8000/offer/{{$offer->id}}/update">Update offer</a>
