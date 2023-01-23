@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('has_tv');
             $table->string('has_ac');
             $table->string('has_fridge');
-            $table->string('images');
+            $table->string('destination_image');
             $table->timestamps();
         });
     }

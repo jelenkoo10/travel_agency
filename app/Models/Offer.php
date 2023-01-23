@@ -27,7 +27,7 @@ class Offer extends Model
         'has_tv',
         'has_ac',
         'has_fridge',
-        'images',
+        'destination_image',
     ];
 
     public function reservations() {

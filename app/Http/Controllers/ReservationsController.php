@@ -31,6 +31,6 @@ class ReservationsController extends Controller
         $formValues['status'] = '0';
         Reservation::create($formValues);
 
-        return redirect("/home");//->with('message', 'Listing created successfully!');
+        return redirect("/home");
     }
 }
