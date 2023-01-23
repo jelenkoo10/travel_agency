@@ -51,8 +51,8 @@ class OffersController extends Controller
         //     $data,
         //     $image_array ?? []
         // ));
-
+        Offer::whereId($offer->id)->update($data);
         
-        return redirect("/profile/{$user->id}");
+        return redirect("/offer/{$offer->id}");
     }
 }

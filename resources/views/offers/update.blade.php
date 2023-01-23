@@ -6,7 +6,7 @@
         <form action="/offer/{{ $offer[0]->id }}/update" enctype="multipart/form-data" method="post">
             <!-- @csrf
             @method('PATCH') -->
-
+            @csrf
             <div class="row">
                 <div class="col-8 offset-2">
                     <div class="row">

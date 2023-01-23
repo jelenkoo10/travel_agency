@@ -15,16 +15,22 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            $table->string('offer_name');
             $table->string('continent');
             $table->string('country');
             $table->string('city');
-            $table->string('transport');
-            $table->string('apartment');
-            $table->integer('stars');
-            $table->integer('price');
             $table->dateTime('departure_time');
             $table->dateTime('arrival_time');
-            $table->text('program');
+            $table->string('transport');
+            $table->string('apartment');
+            $table->string('apartment_name');
+            $table->string('accomodation');
+            $table->integer('stars');
+            $table->integer('price');
+            $table->string('has_internet');
+            $table->string('has_tv');
+            $table->string('has_ac');
+            $table->string('has_fridge');
             $table->string('images');
             $table->timestamps();
         });

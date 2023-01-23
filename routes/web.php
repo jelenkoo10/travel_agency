@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\OffersController::class, 'index'])->na
 Route::get('/offer/create', [App\Http\Controllers\OffersController::class, 'create'])->name('offers.create');
 Route::get('/offer/{id}', [App\Http\Controllers\OffersController::class, 'show'])->name('offers.show');
 Route::get('/offer/{id}/update', [App\Http\Controllers\OffersController::class, 'edit'])->name('offers.edit');
-Route::post('/offer/{id}/update', [App\Http\Controllers\OffersController::class, 'store'])->name('offers.store');
+Route::post('/offer/{id}/update', [App\Http\Controllers\OffersController::class, 'update'])->name('offers.store');
 
 Route::get('/reservations', [App\Http\Controllers\ReservationsController::class, 'index'])->name('reservations.index');
 Route::post('/reservation', [App\Http\Controllers\ReservationsController::class, 'store'])->name('reservations.store');

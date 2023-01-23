@@ -10,16 +10,22 @@ class Offer extends Model
     use HasFactory;
 
     protected $fillable = [
+        'offer_name',
         'continent',
         'country',
         'city',
-        'transport',
-        'apartment',
-        'stars',
-        'price',
         'departure_time',
         'arrival_time',
-        'program',
+        'transport',
+        'apartment',
+        'apartment_name',
+        'accomodation',
+        'stars',
+        'price',
+        'has_internet',
+        'has_tv',
+        'has_ac',
+        'has_fridge',
         'images',
     ];
 
