@@ -11,12 +11,14 @@
             @unless ($offers->isEmpty())
                 @foreach ($offers as $offer)
                     <div class="card">
-                        <a href="http://127.0.0.1:8000/offer/{{ $offer->id }}">
-                            <p class="location">{{$offer->city}}, {{$offer->country}}</p>
-                            @auth
-                                <a href="http://127.0.0.1:8000/offer/{{$offer->id}}/update">Update offer</a>
-                            @endauth
-                        </a>
+                        <a href="http://127.0.0.1:8000/offer/{{ $offer->id }}">{{$offer->offer_name}}</a>
+                        <p>{{$offer->city}}, {{$offer->country}} - {{$offer->num_of_days}}</p>
+                        <p>Departure: {{$offer->departure_time}}</p>
+                        <p>Price: {{$offer->price}}</p>
+                        <p>Transport: {{$offer->transport}}</p>
+                        @auth
+                            <a href="http://127.0.0.1:8000/offer/{{$offer->id}}/update">Update offer</a>
+                        @endauth
                     </div>
                 @endforeach
             @endunless

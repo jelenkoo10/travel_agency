@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('city');
             $table->dateTime('departure_time');
             $table->dateTime('arrival_time');
+            $table->string('num_of_days');
             $table->string('transport');
             $table->string('apartment');
             $table->string('apartment_name');

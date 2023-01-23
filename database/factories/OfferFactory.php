@@ -17,10 +17,14 @@ class OfferFactory extends Factory
     public function definition()
     {
         $departure_time = $this->faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years');
+        $formatted_time = $departure_time->format('Y-m-d H:i:s');
+        $tmp_time = date('Y-m-d H:i:s', strtotime($formatted_time . ' + 2 days'));
+        $arrival_time = $this->faker->dateTimeInInterval($startDate = $tmp_time, $interval = '+ 10 days');
+        $num_of_days = $departure_time->diff($arrival_time)->format('%R%a days');
+
         $full_location = $this->faker->location();
         $divided_location = explode(",", $full_location);
 
-        $formatted_time = $departure_time->format('Y-m-d H:i:s');
         $monthName = date('F', strtotime($formatted_time));
         $year = date('Y', strtotime($formatted_time));
 
@@ -31,7 +35,8 @@ class OfferFactory extends Factory
             'country'        =>  $divided_location[1],
             'city'           =>  $divided_location[0],
             'departure_time' =>  $departure_time,
-            'arrival_time'   =>  $this->faker->dateTimeInInterval($startDate = $departure_time, $interval = '+ 10 days'),
+            'arrival_time'   =>  $arrival_time,
+            'num_of_days'    =>  $num_of_days,
             'transport'      =>  $this->faker->transport(),
             'apartment'      =>  $this->faker->apartment(),
             'apartment_name' =>  $this->faker->apartmentName(),

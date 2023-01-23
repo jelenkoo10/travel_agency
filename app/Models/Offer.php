@@ -16,6 +16,7 @@ class Offer extends Model
         'city',
         'departure_time',
         'arrival_time',
+        'num_of_days',
         'transport',
         'apartment',
         'apartment_name',
