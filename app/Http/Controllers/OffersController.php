@@ -94,4 +94,39 @@ class OffersController extends Controller
         
         return redirect("/offer/{$offer->id}");
     }
+
+    public function det_search(Request $request){
+   
+        $offers = Offer::where(function ($query) use ($request) {
+            if($request->offer_name){
+                $query->where('offer_name', 'like', '%' . $request->offer_name . '%');
+            }
+        })->where(function ($query) use ($request) {
+            if($request->city){
+                $query->where('city', 'like', '%' . $request->city . '%');
+            }
+        })->where(function ($query) use ($request) {
+            if($request->continent){
+                $query->where('continent', 'like', '%' . $request->continent . '%');
+            }
+        })->where(function ($query) use ($request) {
+            if($request->country){
+                $query->where('country', 'like', '%' . $request->country . '%');
+            }
+        })->where(function ($query) use ($request) {
+            if($request->transport){
+                $query->where('transport', 'like', '%' . $request->transport . '%');
+            }
+        })->where(function ($query) use ($request) {
+            if($request->departure_time){
+                $query->whereDate('departure_time', '>', '%' . date_create_from_format('m/d/Y:H:i:s', $request->departure_time) . '%');
+            }
+        })->where(function ($query) use ($request) {
+            if($request->arrival_time){
+                $query->whereDate('arrival_time', '<', '%' . date_create_from_format('m/d/Y:H:i:s', $request->arrival_time) . '%');
+            }
+        })->paginate(50);
+
+        return view('offers.index', ['offers'=> $offers]);
+    }
 }
