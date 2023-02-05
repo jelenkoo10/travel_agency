@@ -11,14 +11,18 @@ class OffersController extends Controller
 {
     public function index()
     {
-        $offers = Offer::latest()->paginate(50);
-     
-        return view('offers.index', ['offers'=> $offers]);
+        try {
+            $offers = Offer::latest()->get();
+            return response()->json($offers);
+        }
+        catch(Exception $e) {
+            Log::error($e);
+        }
     }
 
     public function show($id) {
         $offer = Offer::whereId($id)->get();
-        return view('offers.show', compact('offer', 'id'));
+        return response()->json($offer);
     }
 
     public function create() {

@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'phone_number' => $this->faker->tollFreePhoneNumber(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => $this->faker->password(), // password
+            'password' => "test123", // password
             'remember_token' => Str::random(10),
             'role' => $this->faker->role(),
         ];

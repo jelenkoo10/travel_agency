@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+header("Access-Control-Allow-Origin: *");
 
 Route::get('/', function () {
     return view('welcome');
