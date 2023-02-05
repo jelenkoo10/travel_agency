@@ -81,12 +81,12 @@
                     <div>
                         <label for="accomodation">Accomodation type:</label>
                         <select name="accomodation" id="accomodation">
-                            <option value="1_1">1_1</option>
-                            <option value="1_2">1_2</option>
-                            <option value="1_2_and1">1_2_and1</option>
-                            <option value="1_3">1_3</option>
-                            <option value="1_3_and1">1_3_and1</option>
-                            <option value="1_4">1_4</option>
+                            <option value="1_1">1/1</option>
+                            <option value="1_2">1/2</option>
+                            <option value="1_2_and1">1/2 + 1</option>
+                            <option value="1_3">1/3</option>
+                            <option value="1_3_and1">1/3 + 1</option>
+                            <option value="1_4">1/4</option>
                         </select>
                         @error('accomodation')
                             <p class="form-control">{{$message}}</p>

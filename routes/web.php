@@ -32,4 +32,5 @@ Route::post('/reservation', [App\Http\Controllers\ReservationsController::class,
 Route::get('/offer/{id}/reservation', [App\Http\Controllers\ReservationsController::class, 'create'])->name('reservations.create');
 
 Route::get('/user/create', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
+Route::post('/user', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
 Route::get('/user/{id}', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');

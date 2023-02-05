@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Models\Offer;
-use DateTime;
+use Carbon\Carbon;
 
 class OffersController extends Controller
 {
@@ -132,11 +132,11 @@ class OffersController extends Controller
             }
         })->where(function ($query) use ($request) {
             if($request->departure_time){
-                $query->whereDate('departure_time', '>', '%' . date_create_from_format('m/d/Y:H:i:s', $request->departure_time) . '%');
+                $query->whereDate('departure_time', '>=', Carbon::parse($request->departure_time));
             }
         })->where(function ($query) use ($request) {
             if($request->arrival_time){
-                $query->whereDate('arrival_time', '<', '%' . date_create_from_format('m/d/Y:H:i:s', $request->arrival_time) . '%');
+                $query->whereDate('arrival_time', '<=', Carbon::parse($request->arrival_time));
             }
         })->paginate(50);
 
