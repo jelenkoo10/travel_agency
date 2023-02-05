@@ -28,11 +28,15 @@
                 </div>
                 <div>
                     <label for="continent">Continent:</label>
-                    <input
-                        type="text"
-                        name="continent"
-                        value="{{old('continent')}}"
-                    />
+                    <select name="continent" id="continent">
+                        <option value="" selected>Choose continent</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Africa">Africa</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                        <option value="Australia and Oceania">Australia and Oceania</option>
+                    </select>
                 </div>
                 <div>
                     <label for="country">Country:</label>
