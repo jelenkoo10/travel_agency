@@ -49,17 +49,18 @@ class OffersController extends Controller
             'destination_image' => ['required', 'image'],
         ]);
         $departure_time = strtotime($formValues['departure_time']);
+        $arrival_time = strtotime($formValues['arrival_time']);
         $monthName = date('F', $departure_time);
         $year = date('Y', $departure_time);
 
         $offer_name = $formValues['city'] . ", " . $monthName . " " . $year;
         $formValues['offer_name'] = $offer_name;
-        $formValues['num_of_days'] = '';
+        $formValues['num_of_days'] = "+" . abs(round(($arrival_time - $departure_time)/ 86400)) . " days";
 
-        $image_path = request('destination_image')->store('uploads', 'public');
+        $image_path = request('destination_image')->store('cityPhotos', 'public');
         $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
         $image->save();
-        $formValues['destination_image'] = $image_path;
+        $formValues['destination_image'] = "storage/" . $image_path;
 
         Offer::create($formValues);
 
@@ -77,29 +78,41 @@ class OffersController extends Controller
             'city' => 'required',
             'country' => 'required',
             'continent' => 'required',
-            // 'image' => '',
+            'departure_time' => 'required',
+            'arrival_time' => 'required',
+            'transport' => 'required',
+            'apartment' => 'required',
+            'apartment_name' => 'required',
+            'accomodation' => 'required',
+            'stars' => 'required',
+            'price' => 'required',
+            'has_internet' => 'required',
+            'has_tv' => 'required',
+            'has_ac' => 'required',
+            'has_fridge' => 'required',
+            'destination_image' => ['required', 'image'],
         ]);
 
-        // if (request('image')) {
-        //     $image_path = request('image')->store('profile', 'public');
+        $departure_time = strtotime($data['departure_time']);
+        $arrival_time = strtotime($data['arrival_time']);
+        $monthName = date('F', $departure_time);
+        $year = date('Y', $departure_time);
 
-        //     $image = Image::make(public_path("storage/{$image_path}"))->fit(1000, 1000);
+        $offer_name = $data['city'] . ", " . $monthName . " " . $year;
+        $data['offer_name'] = $offer_name;
+        $data['num_of_days'] = "+" . abs(round(($arrival_time - $departure_time)/ 86400)) . " days";
 
-        //     $image->save();
- 
-        //     $image_array = ['image' => $image_path];
-        // } 
+        $image_path = request('destination_image')->store('cityPhotos', 'public');
+        $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
+        $image->save();
+        $data['destination_image'] = "storage/" . $image_path;
 
-        // auth()->user()->profile->update(array_merge(
-        //     $data,
-        //     $image_array ?? []
-        // ));
         Offer::whereId($offer->id)->update($data);
         
-        return redirect("/offer/{$offer->id}");
+        return redirect("/home");
     }
 
-    public function det_search(Request $request){
+    public function search(Request $request){
    
         $offers = Offer::where(function ($query) use ($request) {
             if($request->offer_name){

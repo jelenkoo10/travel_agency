@@ -23,10 +23,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\OffersController::class, 'index'])->name('offers.index');
 Route::post('/offer', [App\Http\Controllers\OffersController::class, 'store'])->name('offers.store');
 Route::get('/offer/create', [App\Http\Controllers\OffersController::class, 'create'])->name('offers.create');
-Route::post('/det_search', [App\Http\Controllers\OffersController::class, 'det_search'])->name('offers.det_search');
+Route::post('/search', [App\Http\Controllers\OffersController::class, 'search'])->name('offers.search');
 Route::get('/offer/{id}', [App\Http\Controllers\OffersController::class, 'show'])->name('offers.show');
 Route::get('/offer/{id}/update', [App\Http\Controllers\OffersController::class, 'edit'])->name('offers.edit');
-Route::post('/offer/{id}/update', [App\Http\Controllers\OffersController::class, 'update'])->name('offers.store');
+Route::patch('update/offer/{id}', [App\Http\Controllers\OffersController::class, 'update'])->name('offers.update');
 
 Route::get('/reservations', [App\Http\Controllers\ReservationsController::class, 'index'])->name('reservations.index');
 Route::post('/reservation', [App\Http\Controllers\ReservationsController::class, 'store'])->name('reservations.store');

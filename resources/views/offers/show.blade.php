@@ -6,8 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <h3>{{$offer[0]->offer_name}}</h3>
-                <p>{{$offer[0]->apartment_name}} - {{$offer[0]->city}}, {{$offer[0]->country}}</p>
+                <img src="{{ URL::to('/') }}/{{$offer[0]->destination_image}}" alt="Picture of city {{$offer[0]->city}}" width="400px" height="300px" />
+                <p>{{$offer[0]->apartment_name}} ({{$offer[0]->stars}} stars) - {{$offer[0]->city}}, {{$offer[0]->country}}</p>
                 <p>Type of apartment: {{$offer[0]->accomodation}} rooms</p>
+                <h4>{{$offer[0]->price}}€</h4>
                 <p>Departure time: {{$offer[0]->departure_time}}</p>
                 <p>In the room, you have: {{ $offer[0]->has_internet == 1 ? 'internet, ' : ''}} {{ $offer[0]->has_tv == 1 ? 'TV' : ''}} {{ $offer[0]->has_ac == 1 ? 'AC, ' : ''}} {{ $offer[0]->has_fridge == 1 ? 'fridge, ' : ''}}</p>
                 <h4>Program: </h4>

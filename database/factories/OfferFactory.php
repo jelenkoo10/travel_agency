@@ -16,6 +16,7 @@ class OfferFactory extends Factory
      */
     public function definition()
     {
+        $offer_strings = [' - Exclusive!', " - Don't miss!", ""];
         $departure_time = $this->faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years');
         $formatted_time = $departure_time->format('Y-m-d H:i:s');
         $tmp_time = date('Y-m-d H:i:s', strtotime($formatted_time . ' + 2 days'));
@@ -28,7 +29,7 @@ class OfferFactory extends Factory
         $monthName = date('F', strtotime($formatted_time));
         $year = date('Y', strtotime($formatted_time));
 
-        $offer_name = $divided_location[0] . ", " . $monthName . " " . $year;
+        $offer_name = $divided_location[0] . ", " . $monthName . " " . $year . $offer_strings[rand(0,2)];
         return [
             'offer_name'        =>  $offer_name,
             'continent'         =>  $divided_location[2],
@@ -47,7 +48,7 @@ class OfferFactory extends Factory
             'has_tv'            =>  $this->faker->boolean($chanceOfGettingTrue = 50),
             'has_ac'            =>  $this->faker->boolean($chanceOfGettingTrue = 50),
             'has_fridge'        =>  $this->faker->boolean($chanceOfGettingTrue = 50),
-            'destination_image' =>  "",
+            'destination_image' =>  "storage/cityPhotos/" . strtolower($divided_location[0]) . ".jpg",
         ];
     }
 }
