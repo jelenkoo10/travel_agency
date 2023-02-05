@@ -7,7 +7,7 @@
             <a href="http://127.0.0.1:8000/offer/create">Add new offer</a>
         @endauth
 
-        <form action='/det_search' enctype="multipart/form-data" method="post">
+        <form action='/search' enctype="multipart/form-data" method="post">
             @csrf
             <div>
                 <div>
@@ -72,10 +72,14 @@
             </div>
             <div>
                 <div class="col-6">
-                    <button class="submit-btn">Pretraži</button>
+                    <button class="submit-btn">Search</button>
                 </div>
             </div>
         </form>
+
+        <div class="mt-6 p-4">
+            {{$offers->links('pagination::bootstrap-4')}}
+        </div>
         
         <div class="col-md-8">
             @unless ($offers->isEmpty())

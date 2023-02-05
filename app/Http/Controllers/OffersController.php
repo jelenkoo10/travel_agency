@@ -95,7 +95,7 @@ class OffersController extends Controller
         return redirect("/offer/{$offer->id}");
     }
 
-    public function det_search(Request $request){
+    public function search(Request $request){
    
         $offers = Offer::where(function ($query) use ($request) {
             if($request->offer_name){
