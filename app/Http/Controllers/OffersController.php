@@ -108,6 +108,11 @@ class OffersController extends Controller
         return redirect("/home");
     }
 
+    public function destroy($id) {
+        Offer::whereId($id)->delete();
+        return back();
+    }
+
     public function search(Request $request){
    
         $offers = Offer::where(function ($query) use ($request) {
