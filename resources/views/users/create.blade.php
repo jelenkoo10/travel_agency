@@ -4,58 +4,44 @@
 <div class="container">
     <div class="row justify-content-center">
         <section>
-            <h1>Unesite detalje rezervacije:</h1>
-            <form action='/reservation' method="post">
+            <h1>Enter details about new STAFF member:</h1>
+            <form action='/user' method="post">
                 @csrf
                 <div>
                     <div>
-                        <input type="hidden" name="offer_id" id="offer_id" value="{{ request()->route('id') }}" />
-                    </div>
-                    <div>
-                        <label for="traveler_name">Ime:</label>
-                        <input type="text" name="traveler_name" id="traveler_name" />
-                        @error('traveler_name')
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" />
+                        @error('name')
                             <p class="form-control">{{$message}}</p>
                         @enderror
                     </div>
                     <div>
-                        <label for="traveler_surname">Prezime:</label>
-                        <input type="text" name="traveler_surname" id="traveler_surname" />
-                        @error('traveler_surname')
+                        <label for="surname">Surname:</label>
+                        <input type="text" name="surname" id="surname" />
+                        @error('surname')
                             <p class="form-control">{{$message}}</p>
                         @enderror
                     </div>
                     <div>
-                        <label for="phone_number">Broj telefona:</label>
+                        <label for="phone_number">Phone number:</label>
                         <input type="text" name="phone_number" id="phone_number" />
                         @error('phone_number')
                             <p class="form-control">{{$message}}</p>
                         @enderror
                     </div>
                     <div>
-                        <label for="email">Email adresa:</label>
+                        <label for="email">Email address:</label>
                         <input type="email" name="email" id="email" />
                         @error('email')
                             <p class="form-control">{{$message}}</p>
                         @enderror
                     </div>
                     <div>
-                        <label for="payment">Način plaćanja:</label>
-                        <select name="payment" id="payment">
-                            <option value="credit-card">Kreditna kartica</option>
-                            <option value="cash">Keš</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="num_of_travelers">Broj putnika:</label>
-                        <input type="number" name="num_of_travelers" id="num_of_travelers" min="1" />
-                        @error('num_of_travelers')
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" />
+                        @error('password')
                             <p class="form-control">{{$message}}</p>
                         @enderror
-                    </div>
-                    <div>
-                        <label for="comment">Dodatne napomene:</label>
-                        <textarea name=comment id="comment"></textarea>
                     </div>
                 </div>
 
