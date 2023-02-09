@@ -1,23 +1,24 @@
-import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { Home } from "./pages/home";
+import Offers from "./pages/Offers";
 
 function App() {
-    useEffect(() => {
-        const send = async () =>
-            axios.get("http://127.0.0.1:8000/offer/13").then(({ data }) => {
-                console.log(data[0].id);
-            });
-
-        send();
-    }, []);
+    axios
+        .post("http://127.0.0.1:8000/login", {
+            email: "walsh.barrett@gmail.com",
+            password: "test123",
+        })
+        .then((data) => {
+            console.log(data);
+        });
 
     return (
-        <BrowserRouter>
-            <button type="submit" label="Send">
-                Send!
-            </button>
-        </BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/offers" element={<Offers />} />
+        </Routes>
     );
 }
 
