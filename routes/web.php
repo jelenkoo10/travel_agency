@@ -32,6 +32,6 @@ Route::patch('update/offer/{id}', [App\Http\Controllers\OffersController::class,
 Route::get('/reservations', [App\Http\Controllers\ReservationsController::class, 'index'])->name('reservations.index');
 Route::post('/reservation', [App\Http\Controllers\ReservationsController::class, 'store'])->name('reservations.store');
 
-Route::get('/user/create', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
 Route::post('/user', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
-Route::get('/user/{id}', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
+Route::get('/user/show', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
+Route::patch('update/user/{id}', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
