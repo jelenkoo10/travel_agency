@@ -61,7 +61,7 @@ const Input = ({
     };
 
     return (
-        <div className="mb-7 relative">
+        <div className="mb-2 relative">
             <label
                 htmlFor={id}
                 className={`mb-3 block ${labelStyle} text-darkGray`}
@@ -83,15 +83,11 @@ const Input = ({
                     !inputState.isValid && inputState.isTouched
                         ? "bg-lightRed border border-darkRed text-darkRed placeholder-darkRed "
                         : ""
-                } w-full rounded-md border border-black  py-3 px-2 text-base font-normal text-black outline-none focus:border-hoverGreen focus:shadow-md`}
+                } w-full rounded-md border border-black py-2 px-2 text-base font-normal text-black outline-none focus:border-lightGreen focus:shadow-md`}
             />
             {!inputState.isValid && inputState.isTouched && (
-                <div className="inline-flex absolute top-[5.6rem] left-0">
-                    <img
-                        className="mr-2"
-                        src="/assets/error-sign.svg"
-                        alt="error"
-                    />
+                <div className="inline-flex absolute top-[90px] right-0">
+                    <img className="mr-2" src="/error-sign.svg" alt="error" />
                     <p className="text-darkRed font-semibold text-sm">
                         {errorText}
                     </p>
