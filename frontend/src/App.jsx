@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Home } from "./pages/home";
 import Offers from "./pages/Offers";
+import AdminOffers from "./pages/AdminOffers";
 
 function App() {
     axios
@@ -12,7 +13,7 @@ function App() {
         })
         .then((data) => {
             console.log(data);
-            // getRes();
+            getRes();
         });
 
     const getRes = () => {
@@ -20,10 +21,12 @@ function App() {
             console.log(data);
         });
     };
+
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/offers" element={<Offers />} />
+            <Route path="/adminOffers" element={<AdminOffers />} />
         </Routes>
     );
 }

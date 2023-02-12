@@ -18,14 +18,14 @@ const logIn = async ({ email, password }) => {
 
 const getUser = async ({ email }) => {
     try {
-        const response = await axios.get("http://127.0.0.1:8000/user/show", {
+        const response = await axios.post("http://127.0.0.1:8000/getuser", {
             email,
         });
 
-        return response;
+        return response.data;
     } catch (error) {
         console.log(
-            "🚀 ~ file: UserService.js ~ line 16 ~ logIn ~ error",
+            "🚀 ~ file: UserService.js ~ line 16 ~ getUser ~ error",
             error
         );
     }

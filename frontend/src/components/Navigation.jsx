@@ -10,6 +10,10 @@ function Navigation() {
         setModal(false);
     };
 
+    const isLogged = () => {
+        setLogged(true);
+    };
+
     return (
         <div className="h-[60px] flex px-[30px] w-full justify-between items-center">
             <div>
@@ -36,7 +40,7 @@ function Navigation() {
                         className="absolute z-[-1] bg-[#000] opacity-30 w-[100%] h-[100%] cursor-pointer"
                         onClick={() => setModal(null)}
                     ></div>
-                    <LogIn closeM={closeModal} />
+                    <LogIn closeM={closeModal} isLogged={isLogged} />
                 </div>
             )}
         </div>

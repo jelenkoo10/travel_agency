@@ -4,8 +4,11 @@ import { UserService } from "../services/UserService";
 import Button from "./FormElements/Button";
 import Input from "./FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../utils/validators";
+import { useNavigate } from "react-router-dom";
 
-function LogIn() {
+function LogIn({ isLogged }) {
+    const navigate = useNavigate();
+
     const [formState, inputHandler] = useForm(
         {
             email: {
@@ -33,11 +36,13 @@ function LogIn() {
             console.log("succes");
             const user = await UserService.getUser(data);
             console.log(user);
+            isLogged();
+            navigate("/adminOffers");
         }
     };
 
     return (
-        <div className="w-[30%] h-[30%] bg-white">
+        <div className="w-[40%] h-[40%] bg-white">
             <form onSubmit={handleSubmit}>
                 <Input
                     id="email"
@@ -59,7 +64,9 @@ function LogIn() {
                     errorText="Enter your password!"
                     onInput={inputHandler}
                 />
-                <Button type="submit">Login</Button>
+                <div className="mt-5">
+                    <Button type="submit">Login</Button>
+                </div>
             </form>
         </div>
     );
