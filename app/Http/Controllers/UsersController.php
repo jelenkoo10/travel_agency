@@ -8,8 +8,8 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
-    public function index($id) {
-        $user = User::where('id', $id)->get();
+    public function index(Request $req) {
+        $user = User::where('email', $req['email'])->get();
         return response()->json($user);
     }
 
