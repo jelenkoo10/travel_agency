@@ -7,13 +7,19 @@ import Offers from "./pages/Offers";
 function App() {
     axios
         .post("http://127.0.0.1:8000/login", {
-            email: "walsh.barrett@gmail.com",
+            email: "ray23@gmail.com",
             password: "test123",
         })
         .then((data) => {
             console.log(data);
+            getRes();
         });
 
+    const getRes = () => {
+        axios.get("http://127.0.0.1:8000/reservations").then(({ data }) => {
+            console.log(data);
+        });
+    };
     return (
         <Routes>
             <Route path="/" element={<Home />} />

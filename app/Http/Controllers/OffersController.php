@@ -20,15 +20,6 @@ class OffersController extends Controller
         }
     }
 
-    public function show($id) {
-        $offer = Offer::whereId($id)->get();
-        return response()->json($offer);
-    }
-
-    public function create() {
-        return view('offers.create');
-    }
-
     public function store() {
         $formValues = request()->validate([
             'continent' => 'required',
@@ -65,11 +56,6 @@ class OffersController extends Controller
         Offer::create($formValues);
 
         return redirect("/home");
-    }
-
-    public function edit($id) {
-        $offer = Offer::whereId($id)->get();
-        return view('offers.update', compact('offer'));
     }
 
     public function update(Offer $offer) {
