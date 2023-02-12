@@ -8,9 +8,9 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
-    public function index(Request $req) {
-        $user = User::where('email', $req['email'])->get();
-        return response()->json($user);
+    public function index() {
+        $user = User::where('email', request('email'))->get();
+        return compact('user');
     }
 
     public function store() {
