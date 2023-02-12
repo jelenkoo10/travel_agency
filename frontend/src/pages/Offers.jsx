@@ -50,6 +50,7 @@ const Offers = () => {
     useEffect(() => {
         setTotalPages(Math.ceil(offers.length / showOffers));
     }, [showOffers, offers]);
+
     const offerCards = displayedOffers.map((data) => (
         <div onClick={() => setModal(data)}>
             <OfferCard key={data.id} data={data} />
