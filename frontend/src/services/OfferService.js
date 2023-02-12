@@ -44,7 +44,37 @@ const reserveOffer = async ({
     }
 };
 
+const searchOffers = async ({
+    offer_name,
+    city,
+    country,
+    continent,
+    transport,
+    departure_time,
+    arrival_time,
+}) => {
+    try {
+        const response = await axios.post("http://127.0.0.1:8000/search", {
+            offer_name,
+            city,
+            country,
+            continent,
+            transport,
+            departure_time,
+            arrival_time,
+        });
+
+        return response.data;
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: OfferService.js ~ line 40 ~ reserveOffer ~ error",
+            error
+        );
+    }
+};
+
 export const OfferService = {
     getAllOffers,
     reserveOffer,
+    searchOffers,
 };

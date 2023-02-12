@@ -12,11 +12,11 @@ function App() {
         })
         .then((data) => {
             console.log(data);
-            getRes();
+            // getRes();
         });
 
     const getRes = () => {
-        axios.get("http://127.0.0.1:8000/reservations").then(({ data }) => {
+        axios.get("http://127.0.0.1:8000/user/3").then(({ data }) => {
             console.log(data);
         });
     };

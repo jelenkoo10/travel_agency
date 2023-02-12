@@ -133,8 +133,8 @@ class OffersController extends Controller
             if($request->arrival_time){
                 $query->whereDate('arrival_time', '<=', Carbon::parse($request->arrival_time));
             }
-        })->paginate(50);
+        })->paginate(60000);
 
-        return view('offers.index', ['offers'=> $offers]);
+        return response()->json($offers);
     }
 }
