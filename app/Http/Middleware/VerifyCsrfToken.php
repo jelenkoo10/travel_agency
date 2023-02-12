@@ -17,7 +17,8 @@ class VerifyCsrfToken extends Middleware
         "/reservations",
         "/search",
         "/user",
-        "/user/{id}"
+        "/user/*",
+        "/search"
         //
     ];
 }

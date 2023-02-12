@@ -1,8 +1,10 @@
 import React from "react";
 import Input from "./FormElements/Input";
 import { useForm } from "../hooks/useForm";
+import Button from "./FormElements/Button";
+import { OfferService } from "../services/OfferService";
 
-function Search() {
+function Search({ searchOffers }) {
     const [formState, inputHandler] = useForm(
         {
             offer_name: {
@@ -30,7 +32,6 @@ function Search() {
                 value: "",
                 isValid: true,
             },
-
             arrival_time: {
                 value: "",
                 isValid: true,
@@ -39,9 +40,32 @@ function Search() {
         false
     );
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const data = {
+            offer_name: formState.inputs.offer_name.value,
+            city: formState.inputs.city.value,
+            country: formState.inputs.country.value,
+            continent: formState.inputs.continent.value,
+            transport: formState.inputs.transport.value,
+            departure_time: formState.inputs.departure_time.value,
+            arrival_time: formState.inputs.arrival_time.value,
+        };
+
+        const response = await OfferService.searchOffers(data);
+
+        searchOffers(response.data);
+
+        console.log(response.data);
+    };
+
     return (
         <div className="pb-2">
-            <form className="flex">
+            <form
+                className="flex justify-between px-[1rem]"
+                onSubmit={handleSubmit}
+            >
                 <div className="max-w-[150px]">
                     <Input
                         id="name"
@@ -118,6 +142,9 @@ function Search() {
                         validators={[]}
                         onInput={inputHandler}
                     />
+                </div>
+                <div className="mt-[2rem]">
+                    <Button type="submit">Search</Button>
                 </div>
             </form>
         </div>
