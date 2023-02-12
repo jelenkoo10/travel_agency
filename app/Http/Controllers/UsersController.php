@@ -8,14 +8,9 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
-    public function index() {
-        $user = auth()->user();
-        $users = User::where('id', '!=', auth()->id())->get();
-        return view('users.index', compact('user', 'users'));
-    }
-
-    public function create() {
-        return view('users.create');
+    public function index($id) {
+        $user = User::where('id', $id)->get();
+        return response()->json($user);
     }
 
     public function store() {
@@ -37,6 +32,21 @@ class UsersController extends Controller
             'email_verified_at' => date('Y-m-d H:i:s'),
         ]);
 
+        return redirect("/home");
+    }
+    
+    public function update() {
+
+        $data = request()->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'phone_number' => 'required',
+            'email' => ['required', 'email'],
+            'password' => 'required',
+        ]);
+
+        User::where('email', $data['email'])->update($data);
+        
         return redirect("/home");
     }
 }
