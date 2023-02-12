@@ -21,6 +21,10 @@ const Offers = () => {
         document.body.style.overflow = "auto";
     }
 
+    const searchOffers = (data) => {
+        setOffers(data);
+    };
+
     const closeModal = () => {
         setModal(null);
     };
@@ -45,7 +49,7 @@ const Offers = () => {
 
     useEffect(() => {
         setTotalPages(Math.ceil(offers.length / showOffers));
-    }, [showOffers]);
+    }, [showOffers, offers]);
     const offerCards = displayedOffers.map((data) => (
         <div onClick={() => setModal(data)}>
             <OfferCard key={data.id} data={data} />
@@ -57,7 +61,7 @@ const Offers = () => {
         <div className="mb-[300px]">
             <div className="h-[60px] bg-[#AAF0BE]">Navigacija</div>
             <div>
-                <Search />
+                <Search searchOffers={searchOffers} />
             </div>
             <div
                 className={`grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-[1rem] ${bgImage} absolute bg-center bg-contain  bg-[#c9c5c5] bg-blend-darken bg-repeat-space min-h-[95%] px-[20px] pt-[20px] w-[100%] pb-[80px]`}
