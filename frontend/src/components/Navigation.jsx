@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logoDark from "../assets/logo-dark.png";
 import LogIn from "./LogIn";
+import { SessionService } from "../services/SessionService";
 
 function Navigation() {
     const [logged, setLogged] = useState(false);
@@ -10,12 +11,16 @@ function Navigation() {
         setModal(false);
     };
 
-    const isLogged = () => {
-        setLogged(true);
-    };
+    useEffect(() => {
+        let session = SessionService.getSessionFromStorage();
+
+        if (session) {
+            setLogged(true);
+        }
+    }, []);
 
     return (
-        <div className="h-[60px] flex px-[30px] w-full justify-between items-center">
+        <div className="h-[60px] flex px-[30px] w-full justify-between items-center bg-lightGreen">
             <div>
                 <img
                     src={logoDark}
@@ -40,7 +45,7 @@ function Navigation() {
                         className="absolute z-[-1] bg-[#000] opacity-30 w-[100%] h-[100%] cursor-pointer"
                         onClick={() => setModal(null)}
                     ></div>
-                    <LogIn closeM={closeModal} isLogged={isLogged} />
+                    <LogIn closeM={closeModal} />
                 </div>
             )}
         </div>

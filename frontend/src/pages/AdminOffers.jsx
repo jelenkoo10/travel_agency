@@ -85,23 +85,23 @@ const AdminOffers = () => {
         console.log(response);
     };
 
-    useEffect(async () => {
-        const res = await axios.get("http://127.0.0.1:8000/show/users/1");
-        console.log(res);
-    }, []);
+    // useEffect(async () => {
+    //     const res = await axios.get("http://127.0.0.1:8000/show/users/1");
+    //     console.log(res);
+    // }, []);
 
     return (
         <div className="mb-[300px]">
             <Navigation />
-            <div>
-                <Search searchOffers={searchOffers} />
-            </div>
-            <div className="w-[100%]">
-                <Button onClick={handleDodaja}>GDE JE DODAJA</Button>
-            </div>
             <div
-                className={`grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-[1rem] ${bgImage} absolute bg-center bg-contain  bg-[#c9c5c5] bg-blend-darken bg-repeat-space min-h-[95%] px-[20px] pt-[20px] w-[100%] pb-[80px]`}
+                className={`grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-[1rem] ${bgImage} absolute bg-center bg-contain  bg-[#c9c5c5] bg-blend-darken bg-repeat-space min-h-[95%] px-[20px] pt-[218px] w-[100%] pb-[80px]`}
             >
+                <div className="w-[100%] absolute top-[20px]">
+                    <Search searchOffers={searchOffers} />
+                </div>
+                <div className="w-[30%] absolute top-[150px] left-[35%]">
+                    <Button onClick={handleDodaja}>Add offer</Button>
+                </div>
                 {offerCards}
                 <div className="w-full absolute bottom-[30px]">
                     <Pagination

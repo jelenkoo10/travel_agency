@@ -5,6 +5,7 @@ import Button from "./FormElements/Button";
 import Input from "./FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../utils/validators";
 import { useNavigate } from "react-router-dom";
+import { SessionService } from "../services/SessionService";
 
 function LogIn({ isLogged }) {
     const navigate = useNavigate();
@@ -33,10 +34,8 @@ function LogIn({ isLogged }) {
         const response = await UserService.logIn(data);
 
         if (response.status === 204) {
-            console.log("succes");
             const user = await UserService.getUser(data);
-            console.log(user);
-            isLogged();
+            SessionService.saveSession(user);
             navigate("/adminOffers");
         }
     };
