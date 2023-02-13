@@ -14,7 +14,7 @@ const OfferCard = ({ data }) => {
     ));
 
     return (
-        <div className="h-[250px] bg-[#f0f2f3] mb-[5px] cursor-pointer flex rounded-lg">
+        <div className="h-[250px] bg-[#f0f2f3] mb-[5px] cursor-pointer flex rounded-lg shadow-xl">
             <div className="w-[70%] h-[100%] flex justify-center items-center p-[1rem]">
                 <img
                     src={`/cityImages/${data.city.toLowerCase()}.jpg`}

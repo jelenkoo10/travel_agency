@@ -18,7 +18,11 @@ class VerifyCsrfToken extends Middleware
         "/search",
         "/user",
         "/user/*",
-        "/search"
+        "/search",
+        "/getuser",
+        "/offer",
+        "/update/offer/*",
+        "/show/users/*",
         //
     ];
 }
