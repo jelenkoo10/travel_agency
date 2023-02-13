@@ -29,4 +29,15 @@ class ReservationsController extends Controller
 
         return redirect("/home");
     }
+
+    public function update($id) {
+        $reservation = Reservation::find($id);
+
+        if($reservation) {
+            $reservation->status = '1';
+            $reservation->save();
+        }
+
+        return "jedva sam uspeo ali sam ga sklepao";
+    }
 }

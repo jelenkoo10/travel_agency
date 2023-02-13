@@ -6,8 +6,15 @@ import AuthGuard from "./components/AuthGuard";
 import AdminProfile from "./pages/AdminProfile";
 import Users from "./pages/Users";
 import Reservation from "./pages/Reservation";
+import { useEffect } from "react";
+import axios from "axios";
 
 function App() {
+    useEffect(() => {
+        axios.post("http://127.0.0.1:8000/res/update/1", {})
+            .then((data) => console.log(data))
+    }, [])
+
     return (
         <Routes>
             <Route path="/" element={<Home />} />

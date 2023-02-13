@@ -5,6 +5,7 @@ import Navigation from "../components/Navigation";
 import Input from "../components/FormElements/Input";
 import { useForm } from "../hooks/useForm";
 import { VALIDATOR_REQUIRE } from "../utils/validators";
+import axios from "axios";
 
 function AdminProfile() {
     const [user, setUser] = useState([]);
@@ -71,14 +72,15 @@ function AdminProfile() {
         e.preventDefault();
 
         const data = {
-            id: user.id,
             email: formState.inputs.email.value,
-            name: formState.inputs.city.name,
+            name: formState.inputs.name.value,
             surname: formState.inputs.surname.value,
             phone_number: formState.inputs.phone_number.value,
+            password: 'test1234'
         };
 
-        // update(data);
+        axios.post(`http://127.0.0.1:8000/update/user/${user.id}`, {data})
+            .then((data) => console.log(data))
     };
 
     if (isLoading) {

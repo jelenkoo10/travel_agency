@@ -40,7 +40,7 @@ class UsersController extends Controller
         return redirect("/home");
     }
     
-    public function update() {
+    public function update($id) {
 
         $data = request()->validate([
             'name' => 'required',
@@ -50,8 +50,8 @@ class UsersController extends Controller
             'password' => 'required',
         ]);
 
-        User::where('email', $data['email'])->update($data);
+        User::where('id', $id)->update($data);
         
-        return redirect("/home");
+        return "e je";
     }
 }
