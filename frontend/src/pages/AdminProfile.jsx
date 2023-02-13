@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { SessionService } from "../../services/SessionService";
-import Button from "../FormElements/Button";
-import Navigation from "../Navigation";
-import Input from "../FormElements/Input";
-import { useForm } from "../../hooks/useForm";
-import { VALIDATOR_REQUIRE } from "../../utils/validators";
+import { SessionService } from "../services/SessionService";
+import Button from "../components/FormElements/Button";
+import Navigation from "../components/Navigation";
+import Input from "../components/FormElements/Input";
+import { useForm } from "../hooks/useForm";
+import { VALIDATOR_REQUIRE } from "../utils/validators";
 
 function AdminProfile() {
     const [user, setUser] = useState([]);

@@ -80,11 +80,6 @@ const AdminOffers = () => {
         console.log(response);
     };
 
-    // useEffect(async () => {
-    //     const res = await axios.get("http://127.0.0.1:8000/show/users/1");
-    //     console.log(res);
-    // }, []);
-
     return (
         <div className="mb-[300px]">
             <Navigation />

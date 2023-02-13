@@ -3,7 +3,9 @@ import { Home } from "./pages/home";
 import Offers from "./pages/Offers";
 import AdminOffers from "./pages/AdminOffers";
 import AuthGuard from "./components/AuthGuard";
-import AdminProfile from "./components/AdminElements/AdminProfile";
+import AdminProfile from "./pages/AdminProfile";
+import Users from "./pages/Users";
+import Reservation from "./pages/Reservation";
 
 function App() {
     return (
@@ -13,6 +15,8 @@ function App() {
             <Route element={<AuthGuard />}>
                 <Route path="/adminOffers" element={<AdminOffers />} />
                 <Route path="/profile" element={<AdminProfile />} />
+                <Route path="/users" element={<Users />} />
+                <Route path="/reservations" element={<Reservation />} />
             </Route>
             {/* <Route path="/image" element={<Image />} /> */}
         </Routes>
