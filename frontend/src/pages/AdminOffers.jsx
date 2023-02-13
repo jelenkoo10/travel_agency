@@ -6,7 +6,7 @@ import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import Navigation from "../components/Navigation";
 import Button from "../components/FormElements/Button";
-import axios from "axios";
+import AdminOfferAdd from "../components/AdminElements/AdminOfferAdd";
 
 const AdminOffers = () => {
     const [offers, setOffers] = useState([]);
@@ -71,27 +71,12 @@ const AdminOffers = () => {
     ));
     const bgImage = `bg-[url('./assets/homeBg.jpg')]`;
 
-    const handleDodaja = async () => {
-        const data = {
-            offer_name: "Bagrdan 2027, Exclusive-Dont Miss",
-            city: "Batocina",
-            country: "Serbia",
-            continent: "Europe",
-            transport: "by foot",
-            departure_time: "2025-11-23 15:24:14",
-            arrival_time: "2025-11-23 15:24:24",
-            apartment: "Bungalow",
-            apartment_name: "Vila sky",
-            accomodation: "1_2",
-            stars: 1,
-            price: 10,
-            has_tv: 1,
-            has_ac: 0,
-            has_internet: 0,
-            has_fridge: 0,
-            destination_image: "destination image",
-        };
+    const handleDodaja = async (data) => {
         const response = await OfferService.addOffer(data);
+        if (response.status === 200) {
+            refreshPage();
+            setAdding(false);
+        }
         console.log(response);
     };
 
@@ -110,7 +95,7 @@ const AdminOffers = () => {
                     <Search searchOffers={searchOffers} />
                 </div>
                 <div className="w-[30%] absolute top-[150px] left-[35%]">
-                    <Button onClick={handleDodaja}>Add offer</Button>
+                    <Button onClick={() => setAdding(true)}>Add offer</Button>
                 </div>
                 {offerCards}
                 <div className="w-full absolute bottom-[30px]">
@@ -144,9 +129,10 @@ const AdminOffers = () => {
                         className="absolute z-[-1] bg-[#000] opacity-30 w-[100%] h-[100%] cursor-pointer"
                         onClick={() => setModal(null)}
                     ></div>
-                    <AdminOfferDetails
-                        abortAdding={abortAdding}
+                    <AdminOfferAdd
+                        toogle={abortAdding}
                         refreshPage={refreshPage}
+                        add={handleDodaja}
                     />
                 </div>
             )}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import close from "../../assets/close.png";
 import { OfferService } from "../../services/OfferService";
-import Button from "../FormElements/Button";
 import AdminOfferInformation from "./AdminInformations";
 import AdminOfferUpdate from "./AdminOfferUpdate";
 
