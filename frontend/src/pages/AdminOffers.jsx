@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OfferCard from "../components/OfferElements/OfferCard";
-import AdminOfferDetails from "../components/OfferElements/AdminOfferDetails";
+import AdminOfferDetails from "../components/AdminElements/AdminOfferDetails";
 import { OfferService } from "../services/OfferService";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
@@ -17,6 +17,8 @@ const AdminOffers = () => {
     const [maxPage, setMaxPage] = useState(3);
     const [totalPages, setTotalPages] = useState(1);
     const [displayedOffers, setDisplayedOffers] = useState([]);
+    const [refresh, setRefresh] = useState(false);
+    const [adding, setAdding] = useState(false);
 
     if (modal) {
         document.body.style.overflow = "hidden";
@@ -32,6 +34,10 @@ const AdminOffers = () => {
         setModal(null);
     };
 
+    const abortAdding = () => {
+        setAdding(false);
+    };
+
     useEffect(() => {
         const fetchOffers = async () => {
             const data = await OfferService.getAllOffers();
@@ -39,7 +45,7 @@ const AdminOffers = () => {
             setTotalPages(Math.ceil(data.length / showOffers));
         };
         fetchOffers();
-    }, []);
+    }, [refresh]);
 
     useEffect(() => {
         setDisplayedOffers(
@@ -53,6 +59,10 @@ const AdminOffers = () => {
     useEffect(() => {
         setTotalPages(Math.ceil(offers.length / showOffers));
     }, [showOffers, offers]);
+
+    const refreshPage = () => {
+        setRefresh(!refresh);
+    };
 
     const offerCards = displayedOffers.map((data) => (
         <div onClick={() => setModal(data)}>
@@ -121,7 +131,23 @@ const AdminOffers = () => {
                         className="absolute z-[-1] bg-[#000] opacity-30 w-[100%] h-[100%] cursor-pointer"
                         onClick={() => setModal(null)}
                     ></div>
-                    <AdminOfferDetails offer={modal} closeM={closeModal} />
+                    <AdminOfferDetails
+                        offer={modal}
+                        closeM={closeModal}
+                        refreshPage={refreshPage}
+                    />
+                </div>
+            )}
+            {adding && (
+                <div className="fixed z-10 w-[100%] h-[100%] flex justify-center items-center top-0 left-0">
+                    <div
+                        className="absolute z-[-1] bg-[#000] opacity-30 w-[100%] h-[100%] cursor-pointer"
+                        onClick={() => setModal(null)}
+                    ></div>
+                    <AdminOfferDetails
+                        abortAdding={abortAdding}
+                        refreshPage={refreshPage}
+                    />
                 </div>
             )}
         </div>

@@ -75,7 +75,6 @@ const searchOffers = async ({
 
 const deleteOffer = async (_id) => {
     try {
-        console.log(`http://127.0.0.1:8000/offer/delete/${_id}`);
         const response = await axios.get(
             `http://127.0.0.1:8000/offer/delete/${_id}`
         );
@@ -133,7 +132,7 @@ const updateOffer = async ({
             }
         );
 
-        return response.data;
+        return response;
     } catch (error) {
         console.log(
             "🚀 ~ file: OfferService.js ~ line 40 ~ reserveOffer ~ error",

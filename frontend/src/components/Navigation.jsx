@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logoDark from "../assets/logo-dark.png";
 import LogIn from "./LogIn";
+import userIcon from "../assets/user.png";
 import { SessionService } from "../services/SessionService";
 
 function Navigation() {
@@ -28,7 +29,6 @@ function Navigation() {
                     className="w-[100px] h-[50px] self-start"
                 />
             </div>
-            <div>Stranice</div>
             <div>
                 {!logged ? (
                     <div>
@@ -36,7 +36,13 @@ function Navigation() {
                         <button>Guest</button>
                     </div>
                 ) : (
-                    <div>User</div>
+                    <div>
+                        <img
+                            src={userIcon}
+                            alt="user"
+                            className="w-[40px] h-[40px] self-start"
+                        />
+                    </div>
                 )}
             </div>
             {modal && (

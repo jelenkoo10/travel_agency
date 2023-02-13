@@ -61,7 +61,7 @@ function Search({ searchOffers }) {
     };
 
     return (
-        <div className="p-2 bg-white rounded-md m-2">
+        <div className="p-2 bg-white rounded-md m-2 shadow-xl">
             <form
                 className="flex justify-between px-[1rem]"
                 onSubmit={handleSubmit}
