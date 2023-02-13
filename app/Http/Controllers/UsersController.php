@@ -13,6 +13,11 @@ class UsersController extends Controller
         return response()->json($user);
     }
 
+    public function show($id) {
+        $users = User::where('id', '!=', $id)->get();
+        return response()->json($users);
+    }
+
     public function store() {
         $formValues = request()->validate([
             'name' => ['required', 'string', 'max:255'],

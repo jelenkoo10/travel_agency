@@ -73,8 +73,129 @@ const searchOffers = async ({
     }
 };
 
+const deleteOffer = async (_id) => {
+    try {
+        console.log(`http://127.0.0.1:8000/offer/delete/${_id}`);
+        const response = await axios.get(
+            `http://127.0.0.1:8000/offer/delete/${_id}`
+        );
+
+        return response;
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: OfferService.js ~ line 85 ~ deleteOffer ~ error",
+            error
+        );
+    }
+};
+
+const updateOffer = async ({
+    id,
+    offer_name,
+    city,
+    country,
+    continent,
+    transport,
+    departure_time,
+    arrival_time,
+    apartment,
+    apartment_name,
+    accomodation,
+    stars,
+    price,
+    has_tv,
+    has_ac,
+    has_internet,
+    has_fridge,
+    destination_image,
+}) => {
+    try {
+        const response = await axios.patch(
+            `http://127.0.0.1:8000/update/offer/${id}`,
+            {
+                offer_name,
+                city,
+                country,
+                continent,
+                transport,
+                departure_time,
+                arrival_time,
+                apartment,
+                apartment_name,
+                accomodation,
+                stars,
+                price,
+                has_tv,
+                has_ac,
+                has_internet,
+                has_fridge,
+                destination_image,
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: OfferService.js ~ line 40 ~ reserveOffer ~ error",
+            error
+        );
+    }
+};
+
+const addOffer = async ({
+    offer_name,
+    city,
+    country,
+    continent,
+    transport,
+    departure_time,
+    arrival_time,
+    apartment,
+    apartment_name,
+    accomodation,
+    stars,
+    price,
+    has_tv,
+    has_ac,
+    has_internet,
+    has_fridge,
+    destination_image,
+}) => {
+    try {
+        const response = await axios.post("http://127.0.0.1:8000/offer", {
+            offer_name,
+            city,
+            country,
+            continent,
+            transport,
+            departure_time,
+            arrival_time,
+            apartment,
+            apartment_name,
+            accomodation,
+            stars,
+            price,
+            has_tv,
+            has_ac,
+            has_internet,
+            has_fridge,
+            destination_image,
+        });
+
+        return response;
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: OfferService.js ~ line 40 ~ reserveOffer ~ error",
+            error
+        );
+    }
+};
+
 export const OfferService = {
     getAllOffers,
     reserveOffer,
     searchOffers,
+    deleteOffer,
+    updateOffer,
+    addOffer,
 };

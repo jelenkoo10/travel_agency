@@ -37,7 +37,7 @@ class OffersController extends Controller
             'has_tv' => 'required',
             'has_ac' => 'required',
             'has_fridge' => 'required',
-            'destination_image' => ['required', 'image'],
+            'destination_image' => 'required',
         ]);
         $departure_time = strtotime($formValues['departure_time']);
         $arrival_time = strtotime($formValues['arrival_time']);
@@ -48,19 +48,20 @@ class OffersController extends Controller
         $formValues['offer_name'] = $offer_name;
         $formValues['num_of_days'] = "+" . abs(round(($arrival_time - $departure_time)/ 86400)) . " days";
 
-        $image_path = request('destination_image')->store('cityPhotos', 'public');
-        $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
-        $image->save();
-        $formValues['destination_image'] = "storage/" . $image_path;
+        // $image_path = request('destination_image')->store('cityPhotos', 'public');
+        // $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
+        // $image->save();
+        // $formValues['destination_image'] = "storage/" . $image_path;
 
         Offer::create($formValues);
 
-        return redirect("/home");
+        return "VOBRA";
     }
 
-    public function update(Offer $offer) {
+    public function update($id) {
 
         $data = request()->validate([
+            'offer_name' => 'required',
             'city' => 'required',
             'country' => 'required',
             'continent' => 'required',
@@ -76,7 +77,7 @@ class OffersController extends Controller
             'has_tv' => 'required',
             'has_ac' => 'required',
             'has_fridge' => 'required',
-            'destination_image' => ['required', 'image'],
+            'destination_image' => 'required'
         ]);
 
         $departure_time = strtotime($data['departure_time']);
@@ -88,19 +89,19 @@ class OffersController extends Controller
         $data['offer_name'] = $offer_name;
         $data['num_of_days'] = "+" . abs(round(($arrival_time - $departure_time)/ 86400)) . " days";
 
-        $image_path = request('destination_image')->store('cityPhotos', 'public');
-        $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
-        $image->save();
-        $data['destination_image'] = "storage/" . $image_path;
+        // $image_path = request('destination_image')->store('cityPhotos', 'public');
+        // $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
+        // $image->save();
+        // $data['destination_image'] = "storage/" . $image_path;
 
-        Offer::whereId($offer->id)->update($data);
+        Offer::whereId($id)->update($data);
         
-        return redirect("/home");
+        return "BRAVO";
     }
 
     public function destroy($id) {
         Offer::whereId($id)->delete();
-        return back();
+        return "Successfully deleted offer";
     }
 
     public function search(Request $request){
