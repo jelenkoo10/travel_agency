@@ -3,6 +3,7 @@ import { Home } from "./pages/home";
 import Offers from "./pages/Offers";
 import AdminOffers from "./pages/AdminOffers";
 import AuthGuard from "./components/AuthGuard";
+import AdminProfile from "./components/AdminElements/AdminProfile";
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <Route path="/offers" element={<Offers />} />
             <Route element={<AuthGuard />}>
                 <Route path="/adminOffers" element={<AdminOffers />} />
+                <Route path="/profile" element={<AdminProfile />} />
             </Route>
             {/* <Route path="/image" element={<Image />} /> */}
         </Routes>

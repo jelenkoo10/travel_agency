@@ -3,13 +3,19 @@ import logoDark from "../assets/logo-dark.png";
 import LogIn from "./LogIn";
 import userIcon from "../assets/user.png";
 import { SessionService } from "../services/SessionService";
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
     const [logged, setLogged] = useState(false);
     const [modal, setModal] = useState(false);
+    const navigate = useNavigate();
 
     const closeModal = () => {
         setModal(false);
+    };
+
+    const handleProfile = () => {
+        navigate("/profile");
     };
 
     useEffect(() => {
@@ -36,13 +42,13 @@ function Navigation() {
                         <button>Guest</button>
                     </div>
                 ) : (
-                    <div>
+                    <button onClick={handleProfile}>
                         <img
                             src={userIcon}
                             alt="user"
                             className="w-[40px] h-[40px] self-start"
                         />
-                    </div>
+                    </button>
                 )}
             </div>
             {modal && (

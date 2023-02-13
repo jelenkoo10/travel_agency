@@ -3,9 +3,9 @@ import Button from "../FormElements/Button";
 import Input from "../FormElements/Input";
 import { useForm } from "../../hooks/useForm";
 import { VALIDATOR_REQUIRE } from "../../utils/validators";
-import back from "../../assets/back.png";
+import close from "../../assets/close.png";
 
-const AdminOfferAdd = ({ toogle, refreshPage }) => {
+const AdminOfferAdd = ({ toogle, add }) => {
     const [formState, inputHandler] = useForm(
         {
             offer_name: {
@@ -98,16 +98,19 @@ const AdminOfferAdd = ({ toogle, refreshPage }) => {
             has_fridge: formState.inputs.has_fridge.value,
             destination_image: "empty",
         };
+        add(data);
     };
 
     return (
-        <div className="relative">
-            <h1 className=" text-xl text-black mb-2 font-bold">{`Reserve your trip to ${name}`}</h1>
+        <div className="relative w-[95%] h-[95%] bg-[#f0f2f3] p-[2rem]">
+            <h1 className=" text-xl text-black mb-2 font-bold">
+                Add offer informations
+            </h1>
             <button
-                className="absolute right-[40px] top-0 w-[30px] h-[30px] cursor-pointer"
+                className="absolute right-[40px] top-[40px] w-[30px] h-[30px] cursor-pointer"
                 onClick={toogle}
             >
-                <img src={back} alt="back" />
+                <img src={close} alt="close" />
             </button>
             <form
                 onSubmit={handleSubmit}
@@ -193,6 +196,16 @@ const AdminOfferAdd = ({ toogle, refreshPage }) => {
                     onInput={inputHandler}
                 />
                 <Input
+                    id="apartment_name"
+                    label="apartment_name"
+                    type="text"
+                    initialValue={formState.inputs.apartment_name.value}
+                    initialValid={formState.inputs.apartment_name.isValid}
+                    validators={[VALIDATOR_REQUIRE()]}
+                    errorText="Enter payment!"
+                    onInput={inputHandler}
+                />
+                <Input
                     id="accomodation"
                     label="accomodation"
                     type="text"
@@ -256,7 +269,10 @@ const AdminOfferAdd = ({ toogle, refreshPage }) => {
                     validators={[VALIDATOR_REQUIRE()]}
                     onInput={inputHandler}
                 />
-                <Button type="submit">Update</Button>
+                <div></div>
+                <div className="max-h-[41.6px] mt-[31px]">
+                    <Button type="submit">Add</Button>
+                </div>
             </form>
         </div>
     );
