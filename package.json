@@ -17,5 +17,8 @@
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.56.1",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "react-toastify": "^9.1.1"
     }
 }
