@@ -84,7 +84,7 @@ const AdminOffers = () => {
         <div className="mb-[300px]">
             <Navigation />
             <div
-                className={`grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-[1rem] ${bgImage} absolute bg-center bg-contain  bg-[#c9c5c5] bg-blend-darken bg-repeat-space min-h-[95%] px-[20px] pt-[218px] w-[100%] pb-[80px]`}
+                className={`grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-[1rem] ${bgImage} absolute bg-center bg-cover bg-[#c9c5c5] bg-blend-darken bg-repeat-y min-h-[95%] px-[20px] pt-[218px] w-[100%] pb-[80px]`}
             >
                 <div className="w-[100%] absolute top-[20px]">
                     <Search searchOffers={searchOffers} />

@@ -1,48 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { SessionService } from "../services/SessionService";
-import Button from "../components/FormElements/Button";
-import Navigation from "../components/Navigation";
-import Input from "../components/FormElements/Input";
-import { useForm } from "../hooks/useForm";
-import { VALIDATOR_REQUIRE } from "../utils/validators";
-import { UserService } from "../services/UserService";
-
-function AdminProfile() {
-    const [user, setUser] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const profile = SessionService.getProfile();
-        setUser(profile[0]);
-        setFormData(
-            {
-                email: {
-                    value: profile[0].email,
-                    isValid: true,
-                },
-                name: {
-                    value: profile[0].name,
-                    isValid: true,
-                },
-                surname: {
-                    value: profile[0].surname,
-                    isValid: true,
-                },
-                role: {
-                    value: profile[0].role,
-                    isValid: true,
-                },
-                phone_number: {
-                    value: profile[0].phone_number,
-                    isValid: true,
-                },
-            },
-            true
-        );
-        setIsLoading(false);
-    }, []);
-
-    const [formState, inputHandler, setFormData] = useForm(
+import React from "react";
+import Button from "../FormElements/Button";
+import Input from "../FormElements/Input";
+import { useForm } from "../../hooks/useForm";
+import { VALIDATOR_REQUIRE } from "../../utils/validators";
+import { UserService } from "../../services/UserService";
+function UserAdd() {
+    const [formState, inputHandler] = useForm(
         {
             email: {
                 value: "",
@@ -56,11 +19,12 @@ function AdminProfile() {
                 value: "",
                 isValid: false,
             },
-            role: {
+
+            phone_number: {
                 value: "",
                 isValid: false,
             },
-            phone_number: {
+            password: {
                 value: "",
                 isValid: false,
             },
@@ -72,29 +36,23 @@ function AdminProfile() {
         e.preventDefault();
 
         const data = {
-            id: user.id,
             email: formState.inputs.email.value,
             name: formState.inputs.name.value,
             surname: formState.inputs.surname.value,
             phone_number: formState.inputs.phone_number.value,
-            password: "test1234",
+            password: formState.inputs.password.value,
         };
 
-        const response = await UserService.updateUser(data);
+        const response = await UserService.addUser(data);
         console.log(response);
     };
 
-    if (isLoading) {
-        return <div>UCitava se</div>;
-    }
-
     return (
-        <div className="w-[100%] h-[100%]">
-            <Navigation />
+        <div className="w-[40%] h-[60%] bg-white rounded-md min-h-[590px]">
             <div>
                 <form
                     onSubmit={handleSubmit}
-                    className="gap-[1rem] w-[30%] mx-auto mt-[3rem]"
+                    className="gap-[1rem] p-12 mx-auto"
                 >
                     <Input
                         id="email"
@@ -137,21 +95,22 @@ function AdminProfile() {
                         onInput={inputHandler}
                     />
                     <Input
-                        id="role"
-                        label="role"
-                        type="text"
-                        initialValue={formState.inputs.role.value}
-                        initialValid={formState.inputs.role.isValid}
+                        id="password"
+                        label="password"
+                        type="password"
+                        initialValue={formState.inputs.password.value}
+                        initialValid={formState.inputs.password.isValid}
                         validators={[VALIDATOR_REQUIRE()]}
-                        disabled
                         errorText="Enter valid email!"
                         onInput={inputHandler}
                     />
-                    <Button>Save</Button>
+                    <div className="mt-8">
+                        <Button>Add</Button>
+                    </div>
                 </form>
             </div>
         </div>
     );
 }
 
-export default AdminProfile;
+export default UserAdd;

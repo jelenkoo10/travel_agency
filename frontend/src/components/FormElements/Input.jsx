@@ -78,7 +78,7 @@ const Input = ({
                 value={inputState.value}
                 className={`
               
-                ${disabled ? "border-disabled text-textGray" : ""}
+                ${disabled ? "border-[grey] text-[grey]" : ""}
                 ${
                     !inputState.isValid && inputState.isTouched
                         ? "bg-lightRed border border-darkRed text-darkRed placeholder-darkRed "

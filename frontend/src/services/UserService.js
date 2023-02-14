@@ -60,4 +60,31 @@ const updateUser = async ({
     }
 };
 
-export const UserService = { logIn, getUser, updateUser };
+const addUser = async ({
+    email,
+    name,
+    surname,
+    phone_number,
+    password,
+    role,
+}) => {
+    try {
+        const response = await axios.post(`http://127.0.0.1:8000/user`, {
+            email,
+            name,
+            surname,
+            phone_number,
+            password,
+            role,
+        });
+
+        return response.data;
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: UserService.js ~ line 86 ~ addUser ~ error",
+            error
+        );
+    }
+};
+
+export const UserService = { logIn, getUser, updateUser, addUser };
