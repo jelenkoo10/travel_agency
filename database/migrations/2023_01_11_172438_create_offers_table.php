@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('has_ac');
             $table->string('has_fridge');
             $table->string('destination_image');
+            $table->enum('available', array('0','1'));
             $table->timestamps();
         });
     }

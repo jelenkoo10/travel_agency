@@ -190,6 +190,35 @@ const addOffer = async ({
     }
 };
 
+const getReservations = async () => {
+    try {
+        const response = await axios.get("http://127.0.0.1:8000/reservations");
+
+        return response.data;
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: OfferService.js ~ line 200 ~ getReservations ~ error",
+            error
+        );
+    }
+};
+
+const confirmReservations = async (id) => {
+    try {
+        const response = await axios.post(
+            `http://127.0.0.1:8000/res/update/${id}`,
+            {}
+        );
+
+        return response;
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: OfferService.js ~ line 216 ~ confirmReservations ~ error",
+            error
+        );
+    }
+};
+
 export const OfferService = {
     getAllOffers,
     reserveOffer,
@@ -197,4 +226,6 @@ export const OfferService = {
     deleteOffer,
     updateOffer,
     addOffer,
+    getReservations,
+    confirmReservations,
 };

@@ -38,7 +38,8 @@ class OffersController extends Controller
             'has_ac' => 'required',
             'has_fridge' => 'required',
             'destination_image' => 'required',
-        ]);
+            'available' => 'required',
+        ]); 
         $departure_time = strtotime($formValues['departure_time']);
         $arrival_time = strtotime($formValues['arrival_time']);
         $monthName = date('F', $departure_time);
@@ -46,12 +47,9 @@ class OffersController extends Controller
 
         $offer_name = $formValues['city'] . ", " . $monthName . " " . $year;
         $formValues['offer_name'] = $offer_name;
+        $formValues['available'] = '1';
         $formValues['num_of_days'] = "+" . abs(round(($arrival_time - $departure_time)/ 86400)) . " days";
-
-        // $image_path = request('destination_image')->store('cityPhotos', 'public');
-        // $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
-        // $image->save();
-        // $formValues['destination_image'] = "storage/" . $image_path;
+        $formValues['destination_image'] = "storage/cityPhotos/" . strtolower($formValues['city']) . ".jpg";
 
         Offer::create($formValues);
 
@@ -88,11 +86,7 @@ class OffersController extends Controller
         $offer_name = $data['city'] . ", " . $monthName . " " . $year;
         $data['offer_name'] = $offer_name;
         $data['num_of_days'] = "+" . abs(round(($arrival_time - $departure_time)/ 86400)) . " days";
-
-        // $image_path = request('destination_image')->store('cityPhotos', 'public');
-        // $image = Image::make(public_path("storage/{$image_path}"))->fit(1200, 1200);
-        // $image->save();
-        // $data['destination_image'] = "storage/" . $image_path;
+        $data['destination_image'] = "storage/cityPhotos/" . strtolower($data['city']) . ".jpg";
 
         Offer::whereId($id)->update($data);
         

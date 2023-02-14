@@ -10,10 +10,9 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function App() {
-    useEffect(() => {
-        axios.post("http://127.0.0.1:8000/res/update/1", {})
-            .then((data) => console.log(data))
-    }, [])
+    // useEffect(() => {
+
+    // }, []);
 
     return (
         <Routes>
@@ -25,7 +24,6 @@ function App() {
                 <Route path="/users" element={<Users />} />
                 <Route path="/reservations" element={<Reservation />} />
             </Route>
-            {/* <Route path="/image" element={<Image />} /> */}
         </Routes>
     );
 }

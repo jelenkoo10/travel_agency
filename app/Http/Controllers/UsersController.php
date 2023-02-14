@@ -37,7 +37,7 @@ class UsersController extends Controller
             'email_verified_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect("/home");
+        return "USPEH USPEH USPELI SMO JE";
     }
     
     public function update($id) {

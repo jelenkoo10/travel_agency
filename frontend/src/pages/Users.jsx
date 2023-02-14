@@ -12,16 +12,26 @@ const Users = () => {
                 `http://127.0.0.1:8000/show/users/${profile[0].id}`
             );
             setUsers(res.data);
-            console.log(res.data);
         };
         fetch();
     }, []);
 
+    // useEffect(() => {
+    //     axios
+    //         .post(`http://127.0.0.1:8000/user`, {
+    //             name: "Majmun",
+    //             surname: "Junglas",
+    //             phone_number: "123123",
+    //             email: "majmunce234@gmail.com",
+    //             password: "test1234",
+    //             role: "staff",
+    //         })
+    //         .then((data) => console.log(data));
+    // }, []);
+
     const displayed = users.map((user) => (
         <div className="w-[200px] h-[20px] mt-5">{user.name}</div>
     ));
-
-    console.log(displayed);
 
     return <div>{displayed}</div>;
 };

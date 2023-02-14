@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Carbon\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Offer>
@@ -49,6 +50,7 @@ class OfferFactory extends Factory
             'has_ac'            =>  $this->faker->boolean($chanceOfGettingTrue = 50),
             'has_fridge'        =>  $this->faker->boolean($chanceOfGettingTrue = 50),
             'destination_image' =>  "storage/cityPhotos/" . strtolower($divided_location[0]) . ".jpg",
+            // 'available'         =>  Carbon::createFromFormat('Y-m-d H:i:s', $departure_time)->isPast() ? '0' : '1',
         ];
     }
 }

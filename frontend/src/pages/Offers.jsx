@@ -4,6 +4,7 @@ import OfferDetails from "../components/OfferElements/OfferDetails";
 import { OfferService } from "../services/OfferService";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
+import Navigation from "../components/Navigation";
 
 const Offers = () => {
     const [offers, setOffers] = useState([]);
@@ -51,22 +52,23 @@ const Offers = () => {
         setTotalPages(Math.ceil(offers.length / showOffers));
     }, [showOffers, offers]);
 
-    const offerCards = displayedOffers.map((data) => (
-        <div onClick={() => setModal(data)}>
-            <OfferCard key={data.id} data={data} />
+    const offerCards = displayedOffers.map((data, i) => (
+        <div onClick={() => setModal(data)} key={`${data.id}+${i}`}>
+            <OfferCard data={data} />
         </div>
     ));
     const bgImage = `bg-[url('./assets/homeBg.jpg')]`;
 
     return (
         <div className="mb-[300px]">
-            <div className="h-[60px] bg-[#AAF0BE]">Navigacija</div>
-            <div>
-                <Search searchOffers={searchOffers} />
-            </div>
+            <Navigation />
+
             <div
-                className={`grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-[1rem] ${bgImage} absolute bg-center bg-contain  bg-[#c9c5c5] bg-blend-darken bg-repeat-space min-h-[95%] px-[20px] pt-[20px] w-[100%] pb-[80px]`}
+                className={`grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-[1rem] ${bgImage} absolute bg-center bg-contain  bg-[#c9c5c5] bg-blend-darken bg-repeat-space min-h-[95%] px-[20px] pt-[140px] w-[100%] pb-[80px]`}
             >
+                <div className="w-[100%] absolute top-[10px]">
+                    <Search searchOffers={searchOffers} />
+                </div>
                 {offerCards}
                 <div className="w-full absolute bottom-[30px]">
                     <Pagination

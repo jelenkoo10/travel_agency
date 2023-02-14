@@ -25,6 +25,7 @@ class VerifyCsrfToken extends Middleware
         "/show/users/*",
         "/res/update/*",
         "/update/user/*",
+        "/photo/upload"
         //
     ];
 }
