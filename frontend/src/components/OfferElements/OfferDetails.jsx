@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import OfferInformation from "./OfferInformation";
 import OfferReservation from "./OfferReservation";
 import close from "../../assets/close.png";
+import Images from "../Images";
 
 const OfferDetails = ({ offer, closeM }) => {
     const imagePath = `/cityImages/${offer.city.toLowerCase()}.jpg`;
@@ -10,11 +11,11 @@ const OfferDetails = ({ offer, closeM }) => {
     const handleToogle = () => {
         setReserving(!reserving);
     };
-
     return (
         <div className="w-[95%] h-[95%] bg-[#f0f2f3] flex">
             <div className="w-[65%] h-[100%] flex justify-center items-center p-[2rem]">
-                <img src={imagePath} className="w-full h-full" />
+                {/* <img src={imagePath} className="w-full h-full" /> */}
+                <Images offer={offer} />
             </div>
             <div className="w-[35%] p-[2rem] relative">
                 <button

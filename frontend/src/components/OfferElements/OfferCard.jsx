@@ -1,6 +1,8 @@
 import React from "react";
 import mapPin from "../../assets/mapPin.png";
 import starIcon from "../../assets/star.png";
+import available from "../../assets/available.png";
+import expired from "../../assets/expired.png";
 
 const OfferCard = ({ data }) => {
     const destination = data.offer_name.split(",");
@@ -14,7 +16,14 @@ const OfferCard = ({ data }) => {
     ));
 
     return (
-        <div className="h-[250px] bg-[#f0f2f3] mb-[5px] cursor-pointer flex rounded-lg shadow-xl">
+        <div className="h-[250px] bg-[#f0f2f3] mb-[5px] cursor-pointer flex rounded-lg shadow-xl relative">
+            <div className="absolute top-[-5px] right-[-5px] rotate-90">
+                <img
+                    src={data.available === "1" ? available : expired}
+                    alt="status"
+                    className="w-[50px] h-[50px] "
+                />
+            </div>
             <div className="w-[70%] h-[100%] flex justify-center items-center p-[1rem]">
                 <img
                     src={`/cityImages/${data.city.toLowerCase()}.jpg`}

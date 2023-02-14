@@ -112,9 +112,6 @@ const AdminOfferInformation = ({
             <div className="mt-[1rem] w-[100%]">
                 <Button onClick={toogle}>Update</Button>
             </div>
-            {/* <div className="w-[100%]">
-                    <Button onClick={handleUpdate}>Update</Button>
-                </div> */}
             <div className="w-[100%] mt-[1rem]">
                 <Button onClick={handleDelete} other="bg-red w-[100%]">
                     Delete

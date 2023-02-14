@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import close from "../../assets/close.png";
 import { OfferService } from "../../services/OfferService";
+import Images from "../Images";
 import AdminOfferInformation from "./AdminInformations";
 import AdminOfferUpdate from "./AdminOfferUpdate";
 
@@ -53,7 +54,7 @@ const AdminOfferDetails = ({ offer, closeM, refreshPage }) => {
             ) : (
                 <div className="flex w-[100%] h-[100%]">
                     <div className="w-[65%] h-[100%] flex justify-center items-center p-[2rem]">
-                        <img src={imagePath} className="w-full h-full" />
+                        <Images offer={offerData} />
                     </div>
                     <div className="w-[35%] p-[2rem] relative">
                         <button

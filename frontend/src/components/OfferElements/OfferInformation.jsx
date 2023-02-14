@@ -15,7 +15,7 @@ const OfferInformation = ({ toogle, offer }) => {
             className="w-[20px] h-[20px]"
         />
     ));
-    console.log(offer);
+
     return (
         <div className="h-[100%] w-[100%]">
             <h1 className="text-2xl font-bold mb-[1rem] w-[70%]">
@@ -41,12 +41,18 @@ const OfferInformation = ({ toogle, offer }) => {
                 {offer.transport}
             </p>
             <p>
-                <span className="font-semibold">Lenght of trip</span>:
-                {offer.num_of_days}
+                <span className="font-semibold">Length of trip</span>:
+                {offer.num_of_days.substr(1)}
             </p>
             <p>
                 <span className="font-semibold">Accomodation</span>:
-                {offer.accomodation}
+                {`${offer.accomodation[0]} room ${offer.accomodation[2]}${
+                    offer.accomodation.length > 3
+                        ? `+${
+                              offer.accomodation[offer.accomodation.length - 1]
+                          }`
+                        : ""
+                } beds `}
             </p>
             <p>
                 <span className="font-semibold">Apartment</span>:
@@ -102,7 +108,9 @@ const OfferInformation = ({ toogle, offer }) => {
             </p>
 
             <div className="mt-[1rem] w-[100%]">
-                <Button onClick={toogle}>Reserve</Button>
+                <Button disabled={offer.available === "0"} onClick={toogle}>
+                    Reserve
+                </Button>
             </div>
         </div>
     );

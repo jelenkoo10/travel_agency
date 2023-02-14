@@ -34,11 +34,11 @@ function Navigation() {
 
     return (
         <div className="h-[60px] flex px-[30px] w-full justify-between items-center bg-lightGreen shadow-md">
-            <div className="ml-4">
+            <div className="ml-3">
                 <img
                     src={logoDark}
                     alt="logo"
-                    className="w-[100px] h-[50px] self-start"
+                    className="w-[100px] h-[50px] self-start mt-3"
                 />
             </div>
             <div className="flex">
