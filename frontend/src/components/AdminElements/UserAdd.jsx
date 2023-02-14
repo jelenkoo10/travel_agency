@@ -45,8 +45,6 @@ function UserAdd() {
             password: formState.inputs.password.value,
         };
 
-        console.log(data);
-
         const response = await UserService.addUser(data);
         if (response) {
             toast.success("Successfully added user !", {

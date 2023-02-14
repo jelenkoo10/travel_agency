@@ -66,8 +66,8 @@ const AdminOffers = () => {
     };
 
     const offerCards = displayedOffers.map((data, i) => (
-        <div onClick={() => setModal(data)}>
-            <OfferCard key={`${data.id}+${i}`} data={data} />
+        <div onClick={() => setModal(data)} key={`${data.id}+${i}`}>
+            <OfferCard data={data} />
         </div>
     ));
     const bgImage = `bg-[url('./assets/homeBg.jpg')]`;

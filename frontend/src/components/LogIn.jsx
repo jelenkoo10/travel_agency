@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { SessionService } from "../services/SessionService";
 import showImage from "../assets/show.png";
 import hideImage from "../assets/hide.png";
+import { toast } from "react-toastify";
 
 function LogIn() {
     const navigate = useNavigate();
@@ -43,11 +44,11 @@ function LogIn() {
             const user = await UserService.getUser(data);
             SessionService.saveSession(user);
             navigate("/adminOffers");
-            toast.success("Successfully update info !", {
+            toast.success("Successfully logged in !", {
                 position: toast.POSITION.TOP_RIGHT,
             });
         } else {
-            toast.error("Error! Change your inputs !", {
+            toast.error("Error! Change your credentials !", {
                 position: toast.POSITION.TOP_RIGHT,
             });
         }
