@@ -6,14 +6,8 @@ import AuthGuard from "./components/AuthGuard";
 import AdminProfile from "./pages/AdminProfile";
 import Users from "./pages/Users";
 import Reservation from "./pages/Reservation";
-import { useEffect } from "react";
-import axios from "axios";
 
 function App() {
-    // useEffect(() => {
-
-    // }, []);
-
     return (
         <Routes>
             <Route path="/" element={<Home />} />
