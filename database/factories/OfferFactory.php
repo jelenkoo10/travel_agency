@@ -18,7 +18,7 @@ class OfferFactory extends Factory
     public function definition()
     {
         $offer_strings = [' - Exclusive!', " - Don't miss!", ""];
-        $departure_time = $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '+5 years');
+        $departure_time = $this->faker->dateTimeBetween($startDate = '-1 years', $endDate = '+5 years');
         $formatted_time = $departure_time->format('Y-m-d H:i:s');
         $tmp_time = date('Y-m-d H:i:s', strtotime($formatted_time . ' + 2 days'));
         $arrival_time = $this->faker->dateTimeInInterval($startDate = $tmp_time, $interval = '+ 10 days');

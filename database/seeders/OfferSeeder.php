@@ -15,6 +15,6 @@ class OfferSeeder extends Seeder
      */
     public function run()
     {
-        Offer::factory(2000)->create();
+        Offer::factory(60000)->create();
     }
 }
