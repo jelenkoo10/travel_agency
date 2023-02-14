@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { SessionService } from "../services/SessionService";
 import axios from "axios";
+import Navigation from "../components/Navigation";
+import UserCard from "../components/AdminElements/UserCard";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -16,24 +18,18 @@ const Users = () => {
         fetch();
     }, []);
 
-    // useEffect(() => {
-    //     axios
-    //         .post(`http://127.0.0.1:8000/user`, {
-    //             name: "Majmun",
-    //             surname: "Junglas",
-    //             phone_number: "123123",
-    //             email: "majmunce234@gmail.com",
-    //             password: "test1234",
-    //             role: "staff",
-    //         })
-    //         .then((data) => console.log(data));
-    // }, []);
-
-    const displayed = users.map((user) => (
-        <div className="w-[200px] h-[20px] mt-5">{user.name}</div>
+    const displayed = users.map((user, i) => (
+        <UserCard key={`${user.id}+${i}`} data={user} />
     ));
 
-    return <div>{displayed}</div>;
+    return (
+        <div>
+            <Navigation />
+            <div className="grid grid-cols-4 gap-[1rem] p-[1rem]">
+                {displayed}
+            </div>
+        </div>
+    );
 };
 
 export default Users;
