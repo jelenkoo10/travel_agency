@@ -60,14 +60,7 @@ const updateUser = async ({
     }
 };
 
-const addUser = async ({
-    email,
-    name,
-    surname,
-    phone_number,
-    password,
-    role,
-}) => {
+const addUser = async ({ email, name, surname, phone_number, password }) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/user`, {
             email,
@@ -75,7 +68,6 @@ const addUser = async ({
             surname,
             phone_number,
             password,
-            role,
         });
 
         return response.data;

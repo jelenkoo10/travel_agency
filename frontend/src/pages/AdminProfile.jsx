@@ -6,6 +6,7 @@ import Input from "../components/FormElements/Input";
 import { useForm } from "../hooks/useForm";
 import { VALIDATOR_REQUIRE } from "../utils/validators";
 import { UserService } from "../services/UserService";
+import { toast } from "react-toastify";
 
 function AdminProfile() {
     const [user, setUser] = useState([]);
@@ -81,7 +82,15 @@ function AdminProfile() {
         };
 
         const response = await UserService.updateUser(data);
-        console.log(response);
+        if (response) {
+            toast.success("Successfully update info !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        } else {
+            toast.error("Error! Change your inputs !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        }
     };
 
     if (isLoading) {

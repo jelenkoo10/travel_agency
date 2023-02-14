@@ -5,6 +5,7 @@ import { useForm } from "../../hooks/useForm";
 import { VALIDATOR_REQUIRE } from "../../utils/validators";
 import { OfferService } from "../../services/OfferService";
 import back from "../../assets/back.png";
+import { toast } from "react-toastify";
 
 const OfferReservation = ({ _id, name, toogle }) => {
     const [formState, inputHandler] = useForm(
@@ -57,7 +58,15 @@ const OfferReservation = ({ _id, name, toogle }) => {
         console.log(data);
 
         const response = await OfferService.reserveOffer(data);
-
+        if (response) {
+            toast.success("Successfully reserved !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        } else {
+            toast.error("Error! Change your informations !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        }
         console.log(response);
     };
     return (

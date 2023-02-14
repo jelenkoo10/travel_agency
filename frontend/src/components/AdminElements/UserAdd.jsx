@@ -4,6 +4,8 @@ import Input from "../FormElements/Input";
 import { useForm } from "../../hooks/useForm";
 import { VALIDATOR_REQUIRE } from "../../utils/validators";
 import { UserService } from "../../services/UserService";
+import { toast } from "react-toastify";
+
 function UserAdd() {
     const [formState, inputHandler] = useForm(
         {
@@ -43,8 +45,18 @@ function UserAdd() {
             password: formState.inputs.password.value,
         };
 
+        console.log(data);
+
         const response = await UserService.addUser(data);
-        console.log(response);
+        if (response) {
+            toast.success("Successfully added user !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        } else {
+            toast.error("Error! Change your inputs !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        }
     };
 
     return (
@@ -104,7 +116,7 @@ function UserAdd() {
                         errorText="Enter valid email!"
                         onInput={inputHandler}
                     />
-                    <div className="mt-8">
+                    <div className="mt-8" type="submit">
                         <Button>Add</Button>
                     </div>
                 </form>

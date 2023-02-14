@@ -4,6 +4,7 @@ import { OfferService } from "../../services/OfferService";
 import Images from "../Images";
 import AdminOfferInformation from "./AdminInformations";
 import AdminOfferUpdate from "./AdminOfferUpdate";
+import { toast } from "react-toastify";
 
 const AdminOfferDetails = ({ offer, closeM, refreshPage }) => {
     const imagePath = `/cityImages/${offer.city.toLowerCase()}.jpg`;
@@ -17,21 +18,34 @@ const AdminOfferDetails = ({ offer, closeM, refreshPage }) => {
 
     const handleDelete = async () => {
         const response = await OfferService.deleteOffer(offer.id);
-        console.log(response);
-        if ((response.status = 200)) {
+
+        if (response) {
+            toast.success("Successfully deleted offer !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
             refreshPage();
             closeM();
+        } else {
+            toast.error("Error! Couldn't delete offer !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
         }
     };
 
     const handleUpdate = async (data) => {
         const response = await OfferService.updateOffer(data);
-        console.log(response);
 
-        if ((response.status = 200)) {
+        if (response) {
+            toast.success("Successfully deleted offer !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
             refreshPage();
             setUpdating(false);
             setOfferData(data);
+        } else {
+            toast.error("Error! Couldn't delete offer !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
         }
     };
 

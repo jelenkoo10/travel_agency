@@ -39,10 +39,17 @@ function LogIn() {
 
         const response = await UserService.logIn(data);
 
-        if (response.status === 204) {
+        if (response) {
             const user = await UserService.getUser(data);
             SessionService.saveSession(user);
             navigate("/adminOffers");
+            toast.success("Successfully update info !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        } else {
+            toast.error("Error! Change your inputs !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
         }
     };
 

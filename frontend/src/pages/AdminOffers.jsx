@@ -7,6 +7,7 @@ import Search from "../components/Search";
 import Navigation from "../components/Navigation";
 import Button from "../components/FormElements/Button";
 import AdminOfferAdd from "../components/AdminElements/AdminOfferAdd";
+import { toast } from "react-toastify";
 
 const AdminOffers = () => {
     const [offers, setOffers] = useState([]);
@@ -73,11 +74,18 @@ const AdminOffers = () => {
 
     const handleDodaja = async (data) => {
         const response = await OfferService.addOffer(data);
-        if (response.status === 200) {
+
+        if (response) {
+            toast.success("Successfully added offer !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
             refreshPage();
             setAdding(false);
+        } else {
+            toast.error("Error! Change your inputs !", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
         }
-        console.log(response);
     };
 
     return (
