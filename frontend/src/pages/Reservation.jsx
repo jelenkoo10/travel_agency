@@ -11,7 +11,6 @@ const Reservation = () => {
     useEffect(() => {
         const fetch = async () => {
             const response = await OfferService.getReservations();
-            console.log(response);
             setReservations(response);
         };
         fetch();
@@ -31,7 +30,6 @@ const Reservation = () => {
     };
 
     if (reservations && !displayed) {
-        console.log("i run");
         const data = reservations.map((reservation, i) => (
             <tr
                 className="mt-5 px-[10px] py-[16px] border-[#ddd] border-[1px] rounded-[15px] mb-[10px] text-center font-medium text-lg h-[50px]"

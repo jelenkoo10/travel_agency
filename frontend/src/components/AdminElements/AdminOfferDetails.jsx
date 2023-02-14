@@ -36,7 +36,7 @@ const AdminOfferDetails = ({ offer, closeM, refreshPage }) => {
         const response = await OfferService.updateOffer(data);
 
         if (response) {
-            toast.success("Successfully deleted offer !", {
+            toast.success("Successfully updated offer !", {
                 position: toast.POSITION.TOP_RIGHT,
             });
             refreshPage();

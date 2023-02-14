@@ -55,7 +55,6 @@ const OfferReservation = ({ _id, name, toogle }) => {
             num_of_travelers: formState.inputs.num_of_travelers.value,
             comment: formState.inputs.comment.value,
         };
-        console.log(data);
 
         const response = await OfferService.reserveOffer(data);
         if (response) {
@@ -67,7 +66,6 @@ const OfferReservation = ({ _id, name, toogle }) => {
                 position: toast.POSITION.TOP_RIGHT,
             });
         }
-        console.log(response);
     };
     return (
         <div className="relative">

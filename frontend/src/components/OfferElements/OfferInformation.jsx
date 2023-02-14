@@ -133,7 +133,7 @@ const OfferInformation = ({ toogle, offer }) => {
             </button>
 
             <div className="mt-[1rem] w-[100%]">
-                <Button disabled={offer.available === "1"} onClick={toogle}>
+                <Button disabled={offer.available === "0"} onClick={toogle}>
                     Reserve
                 </Button>
             </div>
