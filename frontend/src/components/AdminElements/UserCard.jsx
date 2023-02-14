@@ -13,7 +13,9 @@ const UserCard = ({ data }) => {
                 </h1>
                 <p className="mb-1">{data.email}</p>
                 <p className="mb-1">{data.phone_number}</p>
-                <p className="font-bold mb-1">{data.role}</p>
+                <p className="font-bold mb-1">
+                    {data.role[0].toUpperCase() + data.role.substr(1)}
+                </p>
             </div>
         </div>
     );

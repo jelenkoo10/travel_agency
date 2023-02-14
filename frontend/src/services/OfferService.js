@@ -45,7 +45,6 @@ const reserveOffer = async ({
 };
 
 const searchOffers = async ({
-    offer_name,
     city,
     country,
     continent,
@@ -55,7 +54,6 @@ const searchOffers = async ({
 }) => {
     try {
         const response = await axios.post("http://127.0.0.1:8000/search", {
-            offer_name,
             city,
             country,
             continent,
