@@ -113,9 +113,9 @@ function Pagination({
                     </select>
                     <div
                         onClick={() => setShowOffers(perPage)}
-                        className="ml-4 font-bold border-[1px] px-[8px] border-black text-lg"
+                        className="ml-4 font-bold border-[1px] px-[8px] border-black text-lg cursor-pointer"
                     >
-                        Potvrdi
+                        Confirm
                     </div>
                 </form>
             </div>
