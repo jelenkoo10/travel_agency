@@ -57,7 +57,7 @@ const OfferInformation = ({ toogle, offer }) => {
             </p>
             <p>
                 <span className="font-semibold">Transport</span>:
-                {offer.transport}
+                {offer.transport[0].toUpperCase() + offer.transport.substr(1)}
             </p>
             <p>
                 <span className="font-semibold">Length of trip</span>:
@@ -75,7 +75,7 @@ const OfferInformation = ({ toogle, offer }) => {
             </p>
             <p>
                 <span className="font-semibold">Apartment</span>:
-                {offer.apartment}
+                {offer.apartment[0].toUpperCase() + offer.apartment.substr(1)}
             </p>
             <p>
                 <span className="font-semibold">Apartment name</span>:
