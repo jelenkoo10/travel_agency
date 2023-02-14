@@ -15,6 +15,7 @@ const Offers = () => {
     const [maxPage, setMaxPage] = useState(3);
     const [totalPages, setTotalPages] = useState(1);
     const [displayedOffers, setDisplayedOffers] = useState([]);
+    console.log(showOffers);
 
     if (modal) {
         document.body.style.overflow = "hidden";
@@ -37,7 +38,12 @@ const Offers = () => {
             setTotalPages(Math.ceil(data.length / showOffers));
         };
         fetchOffers();
+        console.log("irun");
     }, []);
+
+    useEffect(() => {
+        setTotalPages(Math.ceil(offers.length / showOffers));
+    }, [showOffers, offers]);
 
     useEffect(() => {
         setDisplayedOffers(
@@ -47,10 +53,6 @@ const Offers = () => {
             )
         );
     }, [currentPage, showOffers, offers]);
-
-    useEffect(() => {
-        setTotalPages(Math.ceil(offers.length / showOffers));
-    }, [showOffers, offers]);
 
     const offerCards = displayedOffers.map((data, i) => (
         <div onClick={() => setModal(data)} key={`${data.id}+${i}`}>
@@ -79,6 +81,8 @@ const Offers = () => {
                         setCurrentPage={setCurrentPage}
                         setMaxPage={setMaxPage}
                         setMinPage={setMinPage}
+                        setShowOffers={setShowOffers}
+                        showOffers={showOffers}
                     />
                 </div>
             </div>

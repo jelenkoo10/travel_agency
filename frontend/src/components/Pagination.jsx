@@ -1,3 +1,4 @@
+import { useState } from "react";
 import arrow from "../assets/arrow.png";
 
 function Pagination({
@@ -8,7 +9,11 @@ function Pagination({
     setCurrentPage,
     setMaxPage,
     setMinPage,
+    showOffers,
+    setShowOffers,
 }) {
+    const [perPage, setPerPage] = useState(showOffers);
+
     const incrementPage = () => {
         if (currentPage < maxPage) {
             setCurrentPage(currentPage + 1);
@@ -70,8 +75,12 @@ function Pagination({
         }
     });
 
+    const handleChange = (e) => {
+        setPerPage(e.target.value);
+    };
+
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center relative">
             <img
                 src={arrow}
                 alt="arrow"
@@ -86,6 +95,30 @@ function Pagination({
                 className="w-[18px] h-[18px] mr-[5px] cursor-pointer"
                 onClick={() => incrementPage()}
             />
+            <div className="absolute right-24">
+                <form className="flex">
+                    <label htmlFor="offers" className="font-bold text-lg">
+                        Number of offers per page:
+                    </label>
+                    <select
+                        id="offers"
+                        name="offersnumber"
+                        value={perPage}
+                        onChange={handleChange}
+                    >
+                        <option value={50}>50</option>
+                        <option value={25}>25</option>
+                        <option value={100}>100</option>
+                        <option value={200}>200</option>
+                    </select>
+                    <div
+                        onClick={() => setShowOffers(perPage)}
+                        className="ml-4 font-bold border-[1px] px-[8px] border-black text-lg"
+                    >
+                        Potvrdi
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

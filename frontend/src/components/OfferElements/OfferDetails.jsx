@@ -14,7 +14,6 @@ const OfferDetails = ({ offer, closeM }) => {
     return (
         <div className="w-[95%] h-[95%] bg-[#f0f2f3] flex">
             <div className="w-[65%] h-[100%] flex justify-center items-center p-[2rem]">
-                {/* <img src={imagePath} className="w-full h-full" /> */}
                 <Images offer={offer} />
             </div>
             <div className="w-[35%] p-[2rem] relative">
