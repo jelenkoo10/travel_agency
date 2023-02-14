@@ -18,7 +18,7 @@ class OfferFactory extends Factory
     public function definition()
     {
         $offer_strings = [' - Exclusive!', " - Don't miss!", ""];
-        $departure_time = $this->faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years');
+        $departure_time = $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '+5 years');
         $formatted_time = $departure_time->format('Y-m-d H:i:s');
         $tmp_time = date('Y-m-d H:i:s', strtotime($formatted_time . ' + 2 days'));
         $arrival_time = $this->faker->dateTimeInInterval($startDate = $tmp_time, $interval = '+ 10 days');
@@ -50,7 +50,7 @@ class OfferFactory extends Factory
             'has_ac'            =>  $this->faker->boolean($chanceOfGettingTrue = 50),
             'has_fridge'        =>  $this->faker->boolean($chanceOfGettingTrue = 50),
             'destination_image' =>  "storage/cityPhotos/" . strtolower($divided_location[0]) . ".jpg",
-            // 'available'         =>  Carbon::createFromFormat('Y-m-d H:i:s', $departure_time)->isPast() ? '0' : '1',
+            'available'         =>  Carbon::createFromFormat('Y-m-d H:i:s', $formatted_time)->isPast() ? '0' : '1',
         ];
     }
 }
