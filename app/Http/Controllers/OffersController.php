@@ -12,7 +12,7 @@ class OffersController extends Controller
     public function index()
     {
         try {
-            $offers = Offer::latest()->get();
+            $offers = Offer::orderBy('available', 'DESC')->get();
             return response()->json($offers);
         }
         catch(Exception $e) {
@@ -101,10 +101,6 @@ class OffersController extends Controller
     public function search(Request $request){
    
         $offers = Offer::where(function ($query) use ($request) {
-            if($request->offer_name){
-                $query->where('offer_name', 'like', '%' . $request->offer_name . '%');
-            }
-        })->where(function ($query) use ($request) {
             if($request->city){
                 $query->where('city', 'like', '%' . $request->city . '%');
             }
