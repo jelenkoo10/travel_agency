@@ -15,7 +15,6 @@ const Offers = () => {
     const [maxPage, setMaxPage] = useState(3);
     const [totalPages, setTotalPages] = useState(1);
     const [displayedOffers, setDisplayedOffers] = useState([]);
-    console.log(showOffers);
 
     if (modal) {
         document.body.style.overflow = "hidden";
@@ -38,7 +37,6 @@ const Offers = () => {
             setTotalPages(Math.ceil(data.length / showOffers));
         };
         fetchOffers();
-        console.log("irun");
     }, []);
 
     useEffect(() => {

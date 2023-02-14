@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../FormElements/Button";
 import starIcon from "../../assets/star.png";
 import ac from "../../assets/air-conditioner.png";
@@ -7,6 +7,8 @@ import tv from "../../assets/television.png";
 import fridge from "../../assets/fridge.png";
 
 const OfferInformation = ({ toogle, offer }) => {
+    const [modal, setModal] = useState(false);
+
     const ratingArray = Array.from(new Array(offer.stars));
     const rating = ratingArray.map((_, i) => (
         <img
@@ -15,6 +17,23 @@ const OfferInformation = ({ toogle, offer }) => {
             className="w-[20px] h-[20px]"
         />
     ));
+
+    const start = `We start our journey ${offer.departure_time} with our ${offer.transport}. `;
+    const end = ` We return from our journey ${offer.arrival_time}`;
+    const days =
+        offer.num_of_days.length === 7
+            ? offer.num_of_days[1]
+            : offer.num_of_days[1] + offer.num_of_days[2];
+
+    let inBetween = "";
+    for (let i = 0; i < parseInt(days); i++) {
+        inBetween =
+            inBetween +
+            `Day ${i + 1}: Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Nulla sit amet nisl iaculis, mattis justo
+                    ut, volutpat justo. Pellentesque dapibus sodales erat vel
+                    facilisis. Etiam.`;
+    }
 
     return (
         <div className="h-[100%] w-[100%]">
@@ -106,12 +125,31 @@ const OfferInformation = ({ toogle, offer }) => {
                 <span className="font-semibold">Price</span>:{" "}
                 <span className=" font-extrabold">${offer.price}</span>
             </p>
+            <button
+                onClick={() => setModal(true)}
+                className="underline text-green"
+            >
+                See offer plan
+            </button>
 
             <div className="mt-[1rem] w-[100%]">
                 <Button disabled={offer.available === "0"} onClick={toogle}>
                     Reserve
                 </Button>
             </div>
+            {modal && (
+                <div className="fixed z-10 w-[100%] h-[100%] flex justify-center items-center top-0 left-0">
+                    <div
+                        className="absolute z-[-1] bg-[#000] opacity-30 w-[100%] h-[100%] cursor-pointer"
+                        onClick={() => setModal(null)}
+                    ></div>
+                    <div className="bg-white h-[50%] w-[50%] p-[2rem]">
+                        <h1 className="font-semibold">{start}</h1>
+                        <p>{inBetween}</p>
+                        <h1 className="font-semibold">{end}</h1>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
