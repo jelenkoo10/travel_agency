@@ -1,66 +1,111 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Gringo Travel - Travel Agency Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Travel Agency management system made as a project on our college's final year. The goal was to build a full-stack web application that enables agency employees to perform CRUD operations with offers provided by agency itself, and application guests to reserve a trip for any offer that is available. Application is built with Laravel, React and Tailwind CSS, and also has Dockerfiles provided in Docker branch. 
 
-## About Laravel
+## Table of contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Overview](#overview)
+  - [Screenshot](#screenshot)
+  - [Installation and build](#installation-and-build)
+- [Process](#process)
+  - [Built with](#built-with)
+  - [Useful resources](#useful-resources)
+- [Authors](#authors)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Application should be prepopulated with 60000 offers, out of which 50000 are available, and 10000 are past due. This is implemented by using [Faker](https://github.com/fzaninotto/Faker) library and [custom created providers](https://hofmannsven.com/2021/faker-provider-in-laravel).
+You can access the application as employee or guest. Employees have two roles: Admin & Staff, and their permitted actions depend on the role. 
+- If you choose to 'login as guest', you only have access to the offers, and you can book a trip for any of the offers available. Offer cards have their availability displayed in the top-right corner. You can also search for offers on a certain continent, country and city, choose a way of transport, or filter the offers by departure or/and arrival time. 
+- When you login as Staff member, through login form on homepage, you can also see and search offers, but you can also add a new offer to the database, or update or delete an existing offer. You can also view your profile information, and update it if needed.
+- Admin members also have all these permissions above, and apart from that, they can also add new Staff members, see the list of all reservations and accept each one of them.
 
-## Learning Laravel
+### Screenshot
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Screenshots of the application.
+Home screen display, with Login and Guest buttons in navigation.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+![](./public/projectScreenshots/home.jpg)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Login form for Agency employees.
 
-## Laravel Sponsors
+![](./public/projectScreenshots/login.jpg)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Offers page, with search and pagination.
 
-### Premium Partners
+![](./public/projectScreenshots/offers.jpg)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Single offer display, with detailed data and pictures carousel, and update & delete buttons for employees.
 
-## Contributing
+![](./public/projectScreenshots/offer_modal.jpg)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Form for entering new offer data by employees.
 
-## Code of Conduct
+![](./public/projectScreenshots/add_offer.jpg)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Guest display with a 'reserve' button.
 
-## Security Vulnerabilities
+![](./public/projectScreenshots/reserve_screen.jpg)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Reservation form for guests.
 
-## License
+![](./public/projectScreenshots/reserve_form.jpg)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Users display on admin page.
+
+![](./public/projectScreenshots/users.jpg)
+
+Reservations display for admin.
+
+![](./public/projectScreenshots/reservations_all.jpg)
+
+Profile update page for employees.
+
+![](./public/projectScreenshots/profile.jpg)
+
+
+### Installation and Build
+
+1. Download source code from this branch and extract it somewhere on your machine.
+2. Start Apache and MySQL ports in your WAMP/XAMPP Control Panel.
+3. Enter command prompt, change directory to the project path (cd /project_path).
+4. Run 'php artisan migrate:fresh --seed' command, wait for the data to generate.
+5. Run 'php artisan serve' command.
+6. Enter another command prompt, change directory to the frontend folder of this project (cd /project_path/frontend).
+7. Run 'npm run dev' command.
+8. Open displayed address, after Local:
+
+## Process
+
+### Built with
+
+- Semantic HTML5 markup
+- Flexbox
+- CSS Grid
+- [Laravel](https://laravel.com/docs/9.x/installation) - PHP Framework 
+- [React](https://reactjs.org/) - JS library
+- [Tailwind CSS](https://v2.tailwindcss.com/docs) - Utility-first CSS Framework 
+- [Docker](https://docs.docker.com) - Containerization platform 
+- [React Toastify](https://npmjs.com/package/react-toastify)
+
+### Useful resources
+
+- [React + Laravel Full Stack application](https://www.youtube.com/watch?v=qJq9ZMB2Was) - This helped us for the crucial part of the project: integrating Laravel on the backend with React on the frontend.
+- [Dockerize Laravel-Vite and React app](https://betterprogramming.pub/dockerize-laravel-vite-react-application-in-your-development-environment-a118aea4a02d) - This is an amazing article which helped us to better understand Dockerization process of Laravel-Vite and React applications. I'd recommend it to anyone still learning this concept.
+
+
+## Authors
+
+- Veljko Jelenković
+  - GitHub - [https://github.com/jelenkoo10](https://github.com/jelenkoo10)
+  - LinkedIn - [https://www.linkedin.com/in/veljko-jelenkovi%C4%87-182981250/](https://www.linkedin.com/in/veljko-jelenkovi%C4%87-182981250/)
+
+- Lazar Joksimović 
+  - GitHub - [https://github.com/kila369](https://github.com/kila369)
+  - LinkedIn - [https://www.linkedin.com/in/lazar-joksimovi%C4%87-47406a260/](https://www.linkedin.com/in/lazar-joksimovi%C4%87-47406a260/)
+
+- Jovan Živadinović
+  - GitHub - [https://github.com/jovanzivadinovic](https://github.com/jovanzivadinovic)
+
+- Veljko Stefanović 
+  - GitHub - [https://github.com/VeljkoStefanovic613-2019](https://github.com/VeljkoStefanovic613-2019)
