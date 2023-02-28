@@ -7,9 +7,11 @@ COPY . .
 
 RUN npm install
 
-RUN apk update && apk add bash
+RUN apk update && apk add 
 
 COPY . .
+
+EXPOSE 3000
 
 
 

@@ -19,7 +19,7 @@ services:
       
     
     volumes:
-      - ./backend:/app/backend
+      - ./app:/app
 
     depends_on:
       - db
