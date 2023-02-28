@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Testing Ng">
+    <test name="HomePageTest">
+        <classes>
+            <class name="HomePageTest"></class>
+        </classes>
+    </test>
+    <test name="AdminTest">
+        <classes>
+            <class name="AdminTest"></class>
+        </classes>
+    </test>
+</suite>

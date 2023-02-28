@@ -1,0 +1,81 @@
+version: '3.7'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+
+    
+
+    environment:
+      DB_HOST: db
+      DB_DATABASE: travel_agency
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      
+    ports:
+      - 8000:8000
+      
+    
+    volumes:
+      - ./backend:/app/backend
+
+    depends_on:
+      - db
+    networks:
+      - app
+    command: bash -c "php artisan migrate --force && php artisan serve"
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    tty: true
+
+    
+
+    ports:
+      - 3000:3000
+
+    volumes:
+      - ./frontend:/app/frontend
+
+    depends_on:
+      - backend
+
+    networks:
+      - app
+    command: bash -c "npm install && npm run dev"
+
+  db:
+    image: mysql:5.7.22
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'laravel'
+      MYSQL_USER: 'root'
+      MYSQL_ROOT_PASSWORD: ''
+    
+    volumes:
+      - .dbdata:/var/lib/mysql/
+    
+    networks:
+      - app
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "8080:80"
+  
+  
+    
+
+networks:
+  app:
+
+    driver: bridge
