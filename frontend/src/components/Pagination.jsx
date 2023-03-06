@@ -112,6 +112,7 @@ function Pagination({
                         <option value={200}>200</option>
                     </select>
                     <div
+                        id="offers-btn"
                         onClick={() => setShowOffers(perPage)}
                         className="ml-4 font-bold border-[1px] px-[8px] border-black text-lg cursor-pointer"
                     >

@@ -98,7 +98,7 @@ const AdminOffers = () => {
                     <Search searchOffers={searchOffers} />
                 </div>
                 <div className="w-[30%] absolute top-[150px] left-[35%]">
-                    <Button onClick={() => setAdding(true)}>Add offer</Button>
+                    <Button id="otvori" onClick={() => setAdding(true)}>Add offer</Button>
                 </div>
                 {offerCards}
                 <div className="w-full absolute bottom-[30px]">
